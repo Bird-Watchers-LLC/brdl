@@ -19,6 +19,9 @@ const textFieldReducer = (state = initialState, action) => {
         ...newState,
         username,
       };
+
+    default:
+      return newState;
   }
 };
 
