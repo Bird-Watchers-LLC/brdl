@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
 
 const mapStateToProps = state => ({
-  username: state.username,
-  password: state.password,
+  username: state.textField.username,
+  password: state.textField.password,
 });
 
 const mapDispatchToProps = e => ({
