@@ -15,7 +15,11 @@
       "client"
     ]
   },
-  "keywords": [ "Birds", "Binoculars", "Best Scratch Group"],
+  "keywords": [
+    "Birds",
+    "Binoculars",
+    "Best Scratch Group"
+  ],
   "author": "Me",
   "license": "ISC",
   "dependencies": {
@@ -27,7 +31,9 @@
     "pg": "^8.7.1",
     "prop-types": "^15.6.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",

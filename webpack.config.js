@@ -36,19 +36,4 @@ module.exports = {
       },
   }
 
-
-// devServer: {
-//   static: {
-//     directory: path.resolve(__dirname, './build'),
-//     publicPath: path.resolve(__dirname, './build'),
-//   },
-//   proxy: { '/querydb': 'http://localhost:3000' },
-// },
-
-// devServer: {
-//   proxy: {
-//     '/*': {
-//       target: 'http://localhost:3000'
-//     }
-//   }
-// }
+ 
