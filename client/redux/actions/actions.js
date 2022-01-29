@@ -8,5 +8,12 @@ export const changeToSignUpPageActionCreator = () =>  ({
   type: types.SIGN_UP,
 })
 
+export const changeToCommunityPageActionCreator = () => ({
+  type: types.COMMUNITY,
+})
+
+export const changeToProfilePageActionCreator = () => ({
+  type: types.PROFILE,
+})
+
 // export default login;
- 

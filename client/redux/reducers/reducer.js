@@ -23,6 +23,18 @@ const reducer = (state = initialState, action) => {
         ...stateCopy,
         page: 'login'
       }
+    
+    case types.COMMUNITY:
+      return {
+        ...stateCopy,
+        page: 'community'
+      }
+    
+    case types.PROFILE:
+      return {
+        ...stateCopy,
+        page: 'profile'
+      }
       
     default: 
       return stateCopy;
