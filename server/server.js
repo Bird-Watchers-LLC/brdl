@@ -4,6 +4,8 @@ const path = require('path'),
   app = express();
 
 const userController = require('./controllers/userController');
+const geoController = require('./controllers/geoController');
+const birdController = require('./controllers/birdController');
 
 app.use(express.json());// replaces body-parser
 app.use(express.urlencoded({ extended: true }));// Helps parse different data types
@@ -15,7 +17,7 @@ app.get('/gainAccess', userController.auth, (req, res) => {
   // middleware will return a boolean.
   // if false, res.send('Login credentials are invalid')
   // else, direct user to the profile page
-  res.send('this is the get route for gain access')
+  res.status(200).json(res.locals.auth)
 });
 
 // Account creation
@@ -23,8 +25,12 @@ app.post('/gainAccess', userController.create, (req, res) => {
   // mw will return a boolean
   // if false, res.send('Account creation failed')
   // else, direct user to profile page
-  res.send('this is the post route for gain access')
+  res.status(200).json(res.locals.auth)
 });
+
+// User profile - client will send a GET request to /profile with this info: 
+//{ username: value, lat: value, long: value }
+//// mw will return 
 
 // Local error handler (404/missing routes)
 app.use('*', (req, res) => {
