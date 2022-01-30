@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
   password: state.textField.password,
 });
 
-const mapDispatchToProps = e => ({
-  usernameChangeActionCreator: () => dispatch(actions.usernameChangeActionCreater(e)),
+const mapDispatchToProps = dispatch => ({
+  usernameChangeActionCreator: () => dispatch(actions.usernameChangeActionCreater(event)),
 });
 
 class SignUp extends Component {
@@ -20,9 +20,15 @@ class SignUp extends Component {
     return (
       <div>
         <h1>New to brdl? Create an account!</h1>
-        <form action="" onSubmit={this.props.usernameChangeActionCreator}>
+        <form action="">
           <label htmlFor="username">
-            Create a username <input type="text" id="username" name="password" />
+            Create a username{' '}
+            <input
+              type="text"
+              id="username"
+              name="password"
+              onChange={this.props.usernameChangeActionCreator}
+            />
           </label>
           <label htmlFor="password">
             <input type="text" id="password" name="password" />

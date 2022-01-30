@@ -5,12 +5,17 @@ const initialState = {
   signupPost: {
     valid: true,
   },
+  loginGet: {
+    valid: true,
+  },
 };
 
 const responsesReducer = (state = initialState, action) => {
+  const statecopy = { ...state };
+
   switch (action.type) {
     default:
-      return initialState;
+      return statecopy;
   }
 };
 

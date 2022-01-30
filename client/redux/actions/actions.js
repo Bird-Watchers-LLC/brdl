@@ -18,7 +18,7 @@ export const changeToProfilePageActionCreator = () => ({
 
 export const usernameChangeActionCreater = e => ({
   type: types.USERNAME_CHANGE,
-  payload: e.target.key,
+  payload: e,
 });
 
 // export default login;

@@ -7,11 +7,17 @@ const initialState = {
 };
 
 const textFieldReducer = (state = initialState, action) => {
-  const newState = { ...initialState };
+  const newState = { ...state };
 
   switch (action.type) {
     case types.USERNAME_CHANGE:
-      username = newState.username + action.payload;
+      console.log(newState.username);
+      console.log(action.payload);
+      console.log(action.payload.data);
+
+      if (action.payload.inputType === 'deleteContentBackward')
+        username = newState.username.slice(0, -1);
+      else username = newState.username + action.payload.data;
 
       console.log('changing username', { username });
 
