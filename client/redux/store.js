@@ -1,10 +1,11 @@
 import { createStore } from 'redux';
 // import { composeWithDevTools } from 'redux-devtools-extension';
-import reducer from './reducers/reducer';
+import reducers from './reducers/index.js';
 
 const store = createStore(
-  reducer,
+  reducers
   // composeWithDevTools()
 );
+console.log(store.getState());
 
 export default store;

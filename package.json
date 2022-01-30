@@ -15,7 +15,11 @@
       "client"
     ]
   },
-  "keywords": [ "Birds", "Binoculars", "Best Scratch Group"],
+  "keywords": [
+    "Birds",
+    "Binoculars",
+    "Best Scratch Group"
+  ],
   "author": "Me",
   "license": "ISC",
   "dependencies": {

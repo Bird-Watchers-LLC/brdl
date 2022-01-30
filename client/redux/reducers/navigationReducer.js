@@ -1,44 +1,40 @@
 import * as types from '../constants/actionTypes';
 
-
 const initialState = {
-  page: 'signUp'
-}
+  page: 'signUp',
+};
 
-const reducer = (state = initialState, action) => {
+const navigationReducer = (state = initialState, action) => {
   const stateCopy = { ...state };
 
- 
-
-  switch(action.type) {
-
+  switch (action.type) {
     case types.SIGN_UP:
       return {
         ...stateCopy,
-        page: 'signUp'
-      }
+        page: 'signUp',
+      };
 
     case types.LOGIN:
       return {
         ...stateCopy,
-        page: 'login'
-      }
-    
+        page: 'login',
+      };
+
     case types.COMMUNITY:
       return {
         ...stateCopy,
-        page: 'community'
-      }
-    
+        page: 'community',
+      };
+
     case types.PROFILE:
       return {
         ...stateCopy,
-        page: 'profile'
-      }
-      
-    default: 
+        page: 'profile',
+      };
+
+    default:
       return stateCopy;
   }
-}
+};
 
-export default reducer;
+export default navigationReducer;

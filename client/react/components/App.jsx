@@ -6,31 +6,28 @@ import Login from './Login.jsx';
 import CommunityContainer from '../containers/CommunityContainer.jsx';
 import ProfileContainer from '../containers/ProfileContainer.jsx';
 
-const mapStateToProps = (state) => ( { page: state.page } );
+const mapStateToProps = state => ({ page: state.navigation.page });
 
-
-const mapDispatchToProps = dispatch => ( {
+const mapDispatchToProps = dispatch => ({
   changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
   changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
   changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
-  changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator())
-} );
-
+  changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
+});
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
-
   render() {
-    const display = [<h1 key='title'>brdl</h1>]
+    const display = [<h1 key="title">brdl</h1>];
     if (this.props.page === 'signUp') {
-      display.push(<SignUp key='su' />)
+      display.push(<SignUp key="su" />);
       // display.push(<h2 key='signUp'>Sign Up</h2>);
       // display.push(<button key='lB' onClick={this.props.changeToLoginPageActionCreator}>Have an account?</button>)
     } else if (this.props.page === 'login') {
-      display.push(<Login />)
+      display.push(<Login />);
       // display.push(<h2 key='login'>Login</h2>);
       // display.push(<button key='sB' onClick={this.props.changeToSignUpPageActionCreator}>Need an account?</button>)
     } else if (this.props.page === 'community') display.push(<CommunityContainer />);
@@ -39,12 +36,16 @@ class App extends Component {
     return (
       <div>
         {display}
-        <div className='dev'>
-          <button key='cB' onClick={this.props.changeToCommunityPageActionCreator}>Dev jump to community page</button>
-          <button key='pB' onClick={this.props.changeToProfilePageActionCreator}>Dev jump to profile page</button>
+        <div className="dev">
+          <button key="cB" onClick={this.props.changeToCommunityPageActionCreator}>
+            Dev jump to community page
+          </button>
+          <button key="pB" onClick={this.props.changeToProfilePageActionCreator}>
+            Dev jump to profile page
+          </button>
         </div>
       </div>
-    )
+    );
   }
 }
 
