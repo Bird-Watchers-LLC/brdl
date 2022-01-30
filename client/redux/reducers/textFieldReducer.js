@@ -5,52 +5,76 @@ const initialState = {
   password: '',
   fullName: '',
   message: '',
+  response: { valid: false },
+  validUser: undefined,
 };
 
 const textFieldReducer = (state = initialState, action) => {
   const newState = { ...state };
 
+  console.log('type', action.type);
+
   const updateTextPerLetter = typeOfField => {
-    console.log('inpu', typeOfField);
     let curStateVal = newState[typeOfField];
-    console.log('curStateVal', curStateVal);
     if (action.payload.inputType === 'deleteContentBackward')
       curStateVal = newState[typeOfField].slice(0, -1);
     else curStateVal = newState[typeOfField] + action.payload.data;
 
-    console.log('new State Val', curStateVal);
-
-    return {
-      ...newState,
-      typeOfField: curStateVal,
-    };
+    console.log('new prop', { typeOfField, curStateVal });
+    return curStateVal;
   };
 
   switch (action.type) {
     case types.USERNAME_CHANGE:
-      // if (action.payload.inputType === 'deleteContentBackward')
-      //   username = newState.username.slice(0, -1);
-      // else username = newState.username + action.payload.data;
-
-      // return {
-      //   ...newState,
-      //   username,
-      // };
-      updateTextPerLetter('username');
+      const newUserName = updateTextPerLetter('username');
+      return {
+        ...newState,
+        username: newUserName,
+      };
 
     case types.PASSWORD_CHANGE:
-      // if (action.payload.inputType === 'deleteContentBackward')
-      //   username = newState.username.slice(0, -1);
-      // else username = newState.username + action.payload.data;
-
-      // return {
-      //   ...newState,
-      //   username,
-      // };
-      updateTextPerLetter('password');
+      const newPassword = updateTextPerLetter('password');
+      return {
+        ...newState,
+        password: newPassword,
+      };
 
     case types.FULL_NAME_CHANGE:
-      updateTextPerLetter('fullName');
+      const newFullName = updateTextPerLetter('fullName');
+      return {
+        ...newState,
+        fullName: newFullName,
+      };
+
+    case types.CREATE_ACCOUNT_SUBMIT:
+      // action.payload.e.preventDefault();
+      // console.log(action.payload);
+
+      // let queryRes;
+
+      // if (action.payload.mode === 'dev') {
+      //   queryRes = action.payload.serverRes;
+      // } else {
+      //   // queryRes = actual server query
+      // }
+
+      // console.log(queryRes);
+
+      // console.log({
+      //   ...newState
+      // });
+
+      // return queryRes.valid
+      //   ? {
+      //       ...newState,
+      //       page: 'login',
+      //     }
+      //   : newState;
+
+      return {
+        ...newState,
+        validUser: false,
+      };
 
     default:
       return newState;
