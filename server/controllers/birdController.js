@@ -15,14 +15,31 @@ const birdController = {};
         // lat/long must be up to 2 decimal points
 birdController.nearby = async (req, res, next) => {
     const { username, lat, long } = req.query;
+    const tenBirds = [];
     try {
         const apiResponse = await axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${lat}&lng=${long}`, {
             headers: { "x-ebirdapitoken": "er9pqjjuc7rv" }
-           });
-        // res.locals.nearby = apiResponse;
-        console.log(apiResponse);
-    } catch (error) {
-        console.log(error);
+           })
+        let i = 0;
+        while (i < 10) {
+            tenBirds.push(apiResponse.data[i++])
+        }
+        let newBirdList = tenBirds.map(bird => ({
+            comName: bird.comName,
+            sciName: bird.sciName,
+            locName: bird.locName,
+            lat: bird.lat,
+            long: bird.lng
+        }))
+        res.locals.nearby = { birds: newBirdList }; 
+        console.log(res.locals.nearby);
+        return next();
+    } catch (err) {
+        return next({
+            log: `Express error handler caught in birdController.nearby: ${err.message}`,
+            status: 500,
+            message: { err: 'Express error handler caught in birdController.nearby' }
+          })
      }
 };
 
