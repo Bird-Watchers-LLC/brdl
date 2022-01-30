@@ -5,7 +5,8 @@ import FriendSitings from '../components/FriendSitings.jsx';
 import * as actions from '../../redux/actions/actions.js';
 
 const mapDispatchToProps = dispatch => ({
-  changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
+  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)),
+  // changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()), // replaced by the one above
 })
 
 class CommunityContainer extends Component {
@@ -16,7 +17,7 @@ class CommunityContainer extends Component {
   render () {
     return (
       <div>
-        <button key='pB' onClick={this.props.changeToProfilePageActionCreator}>Profile</button>
+        <button key='pB' onClick={() => this.props.changePageActionCreator('profile')}>Profile</button>
         <h1>Community Sitings</h1>
         <CommunitSitings />
         <h1>Friend Sitings</h1>

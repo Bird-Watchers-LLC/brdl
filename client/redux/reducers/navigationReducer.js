@@ -8,6 +8,12 @@ const navigationReducer = (state = initialState, action) => {
   const stateCopy = { ...state };
 
   switch (action.type) {
+    case types.CHANGE_PAGE:
+      return {
+        ...stateCopy,
+        page: action.payload,
+      }
+      
     case types.SIGN_UP:
       return {
         ...stateCopy,

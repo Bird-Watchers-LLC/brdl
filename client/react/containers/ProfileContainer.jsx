@@ -4,7 +4,8 @@ import * as actions from '../../redux/actions/actions.js';
 import UserStats from '../components/userStats.jsx';
 
 const mapDispatchTopProps = dispatch => ({
-  changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
+  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)),
+  // changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()), // Replaced by the one above it
 });
 
 class ProfileContainer extends Component {
@@ -15,7 +16,7 @@ class ProfileContainer extends Component {
   render () {
     return (
       <div>
-        <button key='cB' onClick={this.props.changeToCommunityPageActionCreator}>Community</button>
+        <button key='cB' onClick={() => this.props.changePageActionCreator('community')}>Community</button>
         <h1>Profile Page</h1>
         <UserStats />
       </div>

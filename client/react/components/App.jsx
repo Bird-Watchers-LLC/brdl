@@ -9,6 +9,7 @@ import ProfileContainer from '../containers/ProfileContainer.jsx';
 const mapStateToProps = state => ({ page: state.navigation.page });
 
 const mapDispatchToProps = dispatch => ({
+  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)),
   changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
   changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
   changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
@@ -37,10 +38,10 @@ class App extends Component {
       <div>
         {display}
         <div className="dev">
-          <button key="cB" onClick={this.props.changeToCommunityPageActionCreator}>
+          <button key="cB" onClick={() => this.props.changePageActionCreator('community')}>
             Dev jump to community page
           </button>
-          <button key="pB" onClick={this.props.changeToProfilePageActionCreator}>
+          <button key="pB" onClick={() => this.props.changePageActionCreator('profile')}>
             Dev jump to profile page
           </button>
         </div>
