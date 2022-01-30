@@ -21,4 +21,14 @@ export const usernameChangeActionCreater = e => ({
   payload: e,
 });
 
+export const passwordChangeActionCreater = e => ({
+  type: types.PASSWORD_CHANGE,
+  payload: e,
+});
+
+export const fullNameChangeActionCreater = e => ({
+  type: types.FULL_NAME_CHANGE,
+  payload: e,
+});
+
 // export default login;
