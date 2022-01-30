@@ -1,3 +1,4 @@
+export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const LOGIN = 'LOGIN';
 export const SIGN_UP = 'SIGN_UP';
 export const COMMUNITY = 'COMMUNITY';
