@@ -31,6 +31,9 @@ app.post('/gainAccess', userController.create, (req, res) => {
 // User profile - client will send a GET request to /profile with this info: 
 //{ username: value, lat: value, long: value }
 //// mw will return 
+app.get('/localBirds', birdController.nearby, (req, res) => {
+  console.log(res.json(res.locals.nearby));
+})
 
 // Local error handler (404/missing routes)
 app.use('*', (req, res) => {
