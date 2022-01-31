@@ -4,24 +4,35 @@ const initialState = {
   username: '',
   password: '',
   message: '',
+  lat: '',
+  long: '',
 };
 
 const textFieldReducer = (state = initialState, action) => {
-  const newState = { ...initialState };
+  // const newState = { ...initialState };
 
   switch (action.type) {
+    case types.UPDATE_LOCATION: 
+      const { lat, long } = action.payload;
+
+      return {
+        ...state,
+        lat,
+        long
+      }
+    
     case types.USERNAME_CHANGE:
-      username = newState.username + action.payload;
+      username = state.username + action.payload;
 
       console.log('changing username', { username });
 
       return {
-        ...newState,
+        ...state,
         username,
       };
 
     default:
-      return newState;
+      return state;
   }
 };
 

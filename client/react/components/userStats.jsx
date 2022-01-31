@@ -7,6 +7,8 @@ const mapStateToProps = (state) => ({
   mode: state.responses.mode,
   seenBirds: state.birds.seenBirds,
   localBirds: state.birds.localBirds,
+  lat: state.textField.lat,
+  long: state.textField.long,
   testSeenBirds: state.responses.testSeenBirds,
   testLocalBirds: state.responses.testLocalBirds
 });
@@ -14,6 +16,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ( {
   updateSeenBirdsActionCreator: (payload) => dispatch(actions.updateSeenBirdsActionCreator(payload)),
   updateLocalBirdsActionCreator: (payload) => dispatch(actions.updateLocalBirdsActionCreator(payload)),
+  updateLocationActionCreator: (payload) => {
+    console.log('hit action with', payload)
+    dispatch(actions.updateLocationActionCreator(payload))
+  }
 } );
 
 class UserStats extends Component {
@@ -24,16 +30,19 @@ class UserStats extends Component {
     // this.getBirdImages = this.getBirdImages.bind(this);
   }
 
-  getBirds() {
-    if (this.props.mode === 'dev') {
+  getBirds(locInfo) {
 
+    if (this.props.mode === 'dev') {
+      console.log('Loc', this.props.lat, this.props.long)// delete
       this.props.updateSeenBirdsActionCreator(this.props.testSeenBirds);
       this.props.updateLocalBirdsActionCreator(this.props.testLocalBirds);
+      console.log('Location', this.props.lat, this.props.long);// delete
+      console.log('state', this.props)// delete
       // this.getBirdImages(this.props.testLocalBirds);
 
     } else if (this.props.mode === 'prod'){
 
-      const url = `http://localhost:3000/community/everyone?username=${this.props.username}&location=${this.props.location}`
+      const url = `http://localhost:3000/community/everyone?username=${this.props.username}&lat=${this.props.lat}&long=${this.props.long}`
 
       fetch(url, {method: 'GET', header: {'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' }})
         .then(data => data.json())
@@ -60,7 +69,17 @@ class UserStats extends Component {
   // }
 
   componentDidMount() {
-    this.getBirds();
+    navigator.geolocation.getCurrentPosition((loc) => {
+      const lat = String(Math.floor(loc.coords.latitude * 100) / 100),
+        long = String(Math.floor(loc.coords.longitude * 100) / 100),
+        locInfo = {};
+
+      locInfo.lat = lat;
+      locInfo.long = long;
+
+      this.props.updateLocationActionCreator(locInfo);
+      this.getBirds();
+    })
   }
 
   render () {
@@ -83,7 +102,7 @@ class UserStats extends Component {
         display.push(<p key={`cM${ind}`}>{`${bird.sciBirdName} is in the area. ${seen}`}</p>)
       })
 
-      display.unshift(<h2>{`You have seen ${totalSeenBirds}.\nYou have seen ${seenBirdsInThisArea} out of ${totalBirdsInArea} in the area`}</h2>)
+      display.unshift(<h2 key='h2US'>{`You have seen ${totalSeenBirds}.\nYou have seen ${seenBirdsInThisArea} out of ${totalBirdsInArea} in the area`}</h2>)
     } else display.push(<h1 key='oops'>Error with localBirds</h1>);
 
     return (

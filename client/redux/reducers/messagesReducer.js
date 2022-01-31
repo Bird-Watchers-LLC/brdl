@@ -6,23 +6,23 @@ const initialState = {
 };
 
 const messagesReducer = (state = initialState, action) => {
-  const stateCopy = { ...state };
+  // const stateCopy = { ...state };
 
   switch (action.type) {
     case types.UPDATE_FRIEND_MESSAGES:
       return {
-        ...stateCopy,
+        ...state,
         friendMessages: action.payload,
       };
 
     case types.UPDATE_COMMUNITY_MESSAGES:
       return {
-        ...stateCopy,
+        ...state,
         communityMessages: action.payload,
       };
 
     default:
-      return stateCopy;
+      return state;
   }
 };
 
