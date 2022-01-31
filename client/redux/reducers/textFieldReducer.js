@@ -8,11 +8,11 @@ const initialState = {
   response: { valid: false },
   validUser: undefined,
   validLogin: undefined,
+  lat: '',
+  long: '',
 };
 
 const textFieldReducer = (state = initialState, action) => {
-  // const state = { ...state };
-
   console.log('type', action.type);
 
   const updateTextPerLetter = typeOfField => {
@@ -26,6 +26,15 @@ const textFieldReducer = (state = initialState, action) => {
   };
 
   switch (action.type) {
+    case types.UPDATE_LOCATION:
+      const { lat, long } = action.payload;
+
+      return {
+        ...state,
+        lat,
+        long,
+      };
+
     case types.USERNAME_CHANGE:
       const newUserName = updateTextPerLetter('username');
       return {

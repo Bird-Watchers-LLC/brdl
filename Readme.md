@@ -1,3 +1,11 @@
+New way of changing pages
+
+  const mapStateToProps = dispatch() {
+    changePageActionCreator = (payload) => dispatch(changePageActionCreator(payload))
+  } // Payload will be a string representing the page name (see the return statement in ./client/react/components/App.jsx to see what page will be loaded by what string)
+
+  If using a button you should use onClick{() => changePageActionCreator('Desired Page')}
+
 Front to Back/Back to Front nomenclature
 
 req.query = {}   // { username: value, password: value }
@@ -18,6 +26,8 @@ Signing up or Logging In
   { username: value, password: value }
   response = { valid: boolean }
 
+Pages
+
 /community*
   GET
   /community/everyone?username=value&location=value
@@ -27,14 +37,14 @@ Signing up or Logging In
 /profile*
   GET, POST, or DELETE
   GET
-  /profile?username=value&location=value
+  /profile?username=value&lat=value&long=value
   { username: value, lat: value, long: value }
   response = { 
     birds: [ { comBirdName: value, sciBirdName: value }, {...}, ... ],
     seenBirds: [ { comBirdName: value, sciBirdName: value, timeStamp: value }. {...}, ... ]
     }
   POST
-  /profile/self?username=value&location=value&timeStamp...
+  /profile/self?username=value&lat=value&long-value&timeStamp=value&sciBirdName=value // lat/long to two decimal points
   { username: value, lat: value, long: value, timeStamp: value, commBirdName, sciBirdName }
   response = { valid: boolean }
   POST

@@ -10,10 +10,11 @@ import ProfileContainer from '../containers/ProfileContainer.jsx';
 const mapStateToProps = state => ({ page: state.navigation.page });
 
 const mapDispatchToProps = dispatch => ({
-  changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
-  changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
-  changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
-  changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
+  changePageActionCreator: payload => dispatch(actions.changePageActionCreator(payload)), // Replaces the four below it
+  // changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
+  // changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
+  // changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
+  // changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
 });
 
 class App extends Component {
@@ -52,7 +53,7 @@ class App extends Component {
           <button key="cB" onClick={this.props.changeToCommunityPageActionCreator}>
             Dev jump to community page
           </button>
-          <button key="pB" onClick={this.props.changeToProfilePageActionCreator}>
+          <button key="pB" onClick={() => this.props.changePageActionCreator('profile')}>
             Dev jump to profile page
           </button>
         </div> */}
