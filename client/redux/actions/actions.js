@@ -1,5 +1,10 @@
 import * as types from '../constants/actionTypes.js';
 
+export const changePageActionCreator = (pl) => ({
+  type: types.CHANGE_PAGE,
+  payload: pl,
+})
+
 export const changeToLoginPageActionCreator = () => ({
   type: types.LOGIN,
 });
@@ -20,5 +25,25 @@ export const usernameChangeActionCreater = e => ({
   type: types.USERNAME_CHANGE,
   payload: e.target.key,
 });
+
+export const updateSeenBirdsActionCreator = (pl) => ({
+  type: types.UPDATE_SEEN_BIRDS,
+  payload: pl
+})
+
+export const updateLocalBirdsActionCreator = (pl) => ({
+  type: types.UPDATE_LOCAL_BIRDS,
+  payload: pl
+})
+
+export const updateFriendMessagesActionCreator = (pl) => ({
+  type: types.UPDATE_FRIEND_MESSAGES,
+  payload: pl
+})
+
+export const updateCommunityMessagesActionCreator = (pl) => ({
+  type: types.UPDATE_COMMUNITY_MESSAGES,
+  payload: pl
+})
 
 // export default login;
