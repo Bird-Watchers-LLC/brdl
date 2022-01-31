@@ -156,3 +156,11 @@ input:focus {
   background-color: #f7bf5a;
   color: #261803;
 }
+
+.validation-msg {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}

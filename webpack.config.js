@@ -33,7 +33,7 @@ module.exports = {
           'file-loader',
           {
             options: {
-              publicPath: path.resolve(__dirname, 'build'),
+              publicPath: 'build',
             },
           },
         ],

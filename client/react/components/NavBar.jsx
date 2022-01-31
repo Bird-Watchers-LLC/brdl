@@ -1,3 +1,4 @@
+// import path from 'path';
 import React, { Component } from 'react';
 import LogoIcon from '../../../assets/img/brdl-logo-2-b.png';
 import LogoText from '../../../assets/img/brdl-logo-2-c.png';
@@ -15,12 +16,8 @@ class NavBar extends Component {
     return (
       <div className="nav-bar-container">
         <div className="nav-logo-container">
-          <a href="#">
-            <img className="nav-logo nav--icon" src={LogoIcon} />
-          </a>
-          <a href="#">
-            <img className="nav-logo nav--text" src={LogoText} />
-          </a>
+          <a href="#">{/* <img className="nav-logo nav--icon" src={LogoIcon} /> */}</a>
+          <a href="#">{/* <img className="nav-logo nav--text" src={LogoText} /> */}</a>
         </div>
         <div className="nav-nav-container">
           <ul>

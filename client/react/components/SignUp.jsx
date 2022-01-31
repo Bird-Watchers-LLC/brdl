@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
+// import birdies from '../../../assets/img/brdl-logo-6-a.png';
 
 const displayMessage = [];
 
@@ -36,6 +37,7 @@ class SignUp extends Component {
 
     if (this.props.mode === 'dev') {
       console.log('here');
+      this.props.signUpPost.valid = false;
       console.log(this.props.signUpPost.valid);
       if (this.props.signUpPost.valid) this.props.changeToProfilePageActionCreator();
       else this.props.createAccountSubmitActionCreator();
@@ -82,12 +84,12 @@ class SignUp extends Component {
     // console.log(this.props);
 
     return (
-      <div className="signup-container" key="su">
+      <div className="signup-container" key="suc">
         <header>
           <h1>New to brd wtchng?</h1>
           <p>Create a brdl account and get started today!</p>
         </header>
-        {this.props.validUser === false ? <p>Incorrect username or password</p> : <p></p>}
+
         <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             <p>Create a username:</p>
@@ -122,6 +124,11 @@ class SignUp extends Component {
           <button className="create-account-btn" type="submit" value="Create account">
             Create account
           </button>
+          {this.props.validUser === false ? (
+            <p className="validation-msg">Username is already taken</p>
+          ) : (
+            <p className="hidden"></p>
+          )}
         </form>
       </div>
     );
