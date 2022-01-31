@@ -82,40 +82,44 @@ class SignUp extends Component {
     // console.log(this.props);
 
     return (
-      <div>
-        <h1>New to brd wtchng?</h1>
-        <h2>Create a brdl account and get started today!</h2>
-        {this.props.validUser === false ? <p>Incorrect username or password</p> : <p></p>}
-        <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
-          <label htmlFor="username">
-            Create a username:
-            <input
-              type="text"
-              id="username"
-              name="password"
-              onChange={this.props.usernameChangeActionCreator}
-            />
-          </label>
-          <label htmlFor="password">
-            Create a password:
-            <input
-              type="text"
-              id="password"
-              name="password"
-              onChange={this.props.passwordChangeActionCreator}
-            />
-          </label>
-          <label htmlFor="full-name">
-            Full Name:
-            <input
-              type="text"
-              id="full-name"
-              name="full-name"
-              onChange={this.props.fullNameChangeActionCreator}
-            />
-          </label>
-          <input type="submit" value="Create account" />
-        </form>
+      <div className="master-center-container">
+        <div className="signup-container">
+          <header>
+            <h1>New to brd wtchng?</h1>
+            <h2>Create a brdl account and get started today!</h2>
+          </header>
+          {this.props.validUser === false ? <p>Incorrect username or password</p> : <p></p>}
+          <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
+            <label htmlFor="username">
+              Create a username:
+              <input
+                type="text"
+                id="username"
+                name="password"
+                onChange={this.props.usernameChangeActionCreator}
+              />
+            </label>
+            <label htmlFor="password">
+              Create a password:
+              <input
+                type="text"
+                id="password"
+                name="password"
+                onChange={this.props.passwordChangeActionCreator}
+              />
+            </label>
+            <label htmlFor="full-name">
+              Full Name:
+              <input
+                type="text"
+                id="full-name"
+                name="full-name"
+                onChange={this.props.fullNameChangeActionCreator}
+              />
+            </label>
+            <input type="submit" value="Create account" />
+          </form>
+        </div>
       </div>
     );
   }

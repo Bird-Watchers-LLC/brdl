@@ -10,3 +10,35 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
     Verdana, sans-serif;
 }
+
+.nav-bar-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 20px;
+  margin-bottom: 80px;
+}
+
+.nav-logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav-nav-container ul {
+  display: flex;
+  list-style: none;
+  gap: 13px;
+}
+
+.nav-bar-container a:link,
+.nav-bar-container a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.signup-container {
+  width: 600px;
+  margin: 0 auto;
+  border: rgb(38, 24, 3) solid 3px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px 1px rgba(38, 24, 3, 0.176);
+}
