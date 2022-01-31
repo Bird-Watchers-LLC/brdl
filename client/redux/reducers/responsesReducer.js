@@ -1,33 +1,33 @@
 import * as types from '../constants/actionTypes';
 
 const testMessages = [
-  { username: 'Kirk', location: { area: 'Lumberton' }, sciBirdName: 'Robin', timeStamp: '1pm' },
-  { username: 'Justin', location: { area: 'Beaumont' }, sciBirdName: 'Blue Jay', timeStamp: '2pm' },
-  { username: 'Calvin', location: { area: 'LA' }, sciBirdName: 'Hawk', timeStamp: '2pm' },
-  { username: 'Julia', location: { area: 'LA' }, sciBirdName:  'Eagle', timeStamp: '4pm' }
+  { username: 'Kirk', location: { area: 'Lumberton' }, sciName: 'Robin', timeStamp: '1pm' },
+  { username: 'Justin', location: { area: 'Beaumont' }, sciName: 'Blue Jay', timeStamp: '2pm' },
+  { username: 'Calvin', location: { area: 'LA' }, sciName: 'Hawk', timeStamp: '2pm' },
+  { username: 'Julia', location: { area: 'LA' }, sciName:  'Eagle', timeStamp: '4pm' }
 ];
 
 const testSeenBirds = [
-  { sciBirdName: 'Robin', timeStamp: '2pm' },
-  { sciBirdName: 'Blue Jay', timeStamp: '2pm' },
-  { sciBirdName: 'Eagle', timeStamp: '2pm' },
-  { sciBirdName: 'Hawk', timeStamp: '2pm' },
-  { sciBirdName: 'Swallow', timeStamp: '2pm' },
-  { sciBirdName: 'Crane', timeStamp: '2pm' }
+  { sciName: 'Robin', timeStamp: '2pm' },
+  { sciName: 'Blue Jay', timeStamp: '2pm' },
+  { sciName: 'Eagle', timeStamp: '2pm' },
+  { sciName: 'Hawk', timeStamp: '2pm' },
+  { sciName: 'Swallow', timeStamp: '2pm' },
+  { sciName: 'Crane', timeStamp: '2pm' }
 ];
 
 const testLocalBirds = [
-  { sciBirdName: 'Robin' },
-  { sciBirdName: 'Blue Jay' },
-  { sciBirdName: 'Eagle' },
-  { sciBirdName: 'Hawk' },
-  { sciBirdName: 'Swallow' },
-  { sciBirdName: 'Crane' },
-  { sciBirdName: 'Pelican' }
+  { sciName: 'Robin' },
+  { sciName: 'Blue Jay' },
+  { sciName: 'Eagle' },
+  { sciName: 'Hawk' },
+  { sciName: 'Swallow' },
+  { sciName: 'Crane' },
+  { sciName: 'Pelican' }
 ]
 
 const initialState = {
-  mode: 'dev',
+  mode: 'prod',
   signupPost: { valid: true },
   testMessages: testMessages,
   testSeenBirds: testSeenBirds,
