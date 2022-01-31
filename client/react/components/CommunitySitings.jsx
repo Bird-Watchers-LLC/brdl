@@ -22,7 +22,7 @@ class CommunitySitings extends Component {
   }
 
   getCommunityMessages() {
-    const url = `http://localhost:3000/community/everyone?username=${this.props.username}&location=${this.props.location}`
+    const url = `http://localhost:3000/community/?username=${this.props.username}&location=${this.props.location}`
     
     if (this.props.mode === 'dev') this.props.updateCommunityMessagesActionCreator(this.props.testMessages);
     else if (this.props.mode === 'prod'){
@@ -40,9 +40,12 @@ class CommunitySitings extends Component {
   render () {
     const display = [];
     if (this.props.communityMessages instanceof Array) {
-      this.props.communityMessages.forEach((mess, ind) => {
-        display.push(<p key={`cM${ind}`}>{`${mess.username} saw a ${mess.sciBirdName} in ${mess.location.area} around ${mess.timeStamp}`}</p>)
-      })
+      if (this.props.communityMessages.length === 0) display.push(<h2 key='noMess'>No community messages available at this time.</h2>);
+      else {
+        this.props.communityMessages.forEach((mess, ind) => {
+          display.push(<p key={`cM${ind}`}>{`${mess.username} saw a ${mess.sciBirdName} in ${mess.location.area} around ${mess.timeStamp}`}</p>)
+        })
+      }
     } else display.push(<h1 key='oops'>Error with communityMessages</h1>);
 
     return (

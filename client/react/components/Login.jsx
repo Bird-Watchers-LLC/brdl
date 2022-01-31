@@ -7,8 +7,8 @@ class Login extends Component {
 
   render () {
     return (
-      <div>
-        <h1>Login Page</h1>
+      <div key='key3'>
+        <h1 key='key4'>Login Page</h1>
         </div>
     )
   }

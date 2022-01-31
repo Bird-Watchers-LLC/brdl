@@ -16,10 +16,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = dispatch => ( {
   updateSeenBirdsActionCreator: (payload) => dispatch(actions.updateSeenBirdsActionCreator(payload)),
   updateLocalBirdsActionCreator: (payload) => dispatch(actions.updateLocalBirdsActionCreator(payload)),
-  updateLocationActionCreator: (payload) => {
-    console.log('hit action with', payload)
-    dispatch(actions.updateLocationActionCreator(payload))
-  }
+  updateLocationActionCreator: (payload) => dispatch(actions.updateLocationActionCreator(payload))
 } );
 
 class UserStats extends Component {
@@ -27,7 +24,31 @@ class UserStats extends Component {
     super(props)
 
     this.getBirds = this.getBirds.bind(this);
-    // this.getBirdImages = this.getBirdImages.bind(this);
+    this.newSeenBird = this.newSeenBird.bind(this);
+  }
+
+  newSeenBird(bird) {
+    if (this.props.mode === 'dev') {
+
+      this.props.seenBirds.push({ sciName: bird, timeStamp: '5pm'});
+      this.props.updateSeenBirdsActionCreator(this.props.seenBirds.slice());
+
+    } else if (this.props.mode === 'prod') {
+
+      const url = `http://localhost:3000/profile?username=${this.props.username}&lat=${this.props.lat}&long=${this.props.long}&sciName=${bird.sciName}`
+
+      fetch(url, {method: 'GET', header: {'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' }})
+        .then(data => data.json())
+        .then((data) => {
+          if ('sciName' in data) {
+            this.props.seenBirds.push({ sciName: data.sciName, timeStamp: data.timeStamp});
+            this.props.updateSeenBirdsActionCreator(this.props.seenBirds.slice());
+          }
+          else console.log('Did to update on back end');
+        })
+        .catch(err => console.log(err));
+      
+    } else console.log('Mode must be prod or dev in ./client/reducers/responsesReducer.js');
   }
 
   getBirds(locInfo) {
@@ -45,7 +66,6 @@ class UserStats extends Component {
       fetch(url, {method: 'GET', header: {'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' }})
         .then(data => data.json())
         .then((data) => {
-          console.log(data)
           if ('seenBirds' in data)this.props.updateSeenBirdsActionCreator(data.seenBirds);
           this.props.updateLocalBirdsActionCreator(data.birds);
           // this.getBirdImages(data.birds);
@@ -75,17 +95,17 @@ class UserStats extends Component {
       const totalSeenBirds = this.props.seenBirds.length,
         totalBirdsInArea = this.props.localBirds.length,
         seenBirdNames = this.props.seenBirds.reduce((acc, curr) => {
-          acc[curr.sciBirdName] = true;
+          acc[curr.sciName] = true;
           return acc;
         }, {})
       let seenBirdsInThisArea = 0;
 
       this.props.localBirds.forEach((bird, ind) => {
         let seen = 'Has not been seen.';
-        if (bird.sciBirdName in seenBirdNames) {
+        if (bird.sciName in seenBirdNames) {
           seenBirdsInThisArea++;
           seen = 'Has been seen.';
-        }
+        } else display.push(<button key={`key${ind}`} onClick={e => this.newSeenBird(bird.sciName)}>I saw {bird.sciName}!!!</button>)
 
         display.push(<p key={`cM${ind}`}>{`${bird.sciName} is in the area. ${seen}`}</p>)
       })
