@@ -35,9 +35,9 @@ class App extends Component {
     else if (this.props.page === 'profile') display.push(<ProfileContainer />);
 
     return (
-      <div>
+      <div key='key2'>
         {display}
-        <div className="dev">
+        <div className="dev" key='key1'>
           <button key="cB" onClick={() => this.props.changePageActionCreator('community')}>
             Dev jump to community page
           </button>

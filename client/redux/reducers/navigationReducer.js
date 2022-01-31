@@ -5,41 +5,41 @@ const initialState = {
 };
 
 const navigationReducer = (state = initialState, action) => {
-  const stateCopy = { ...state };
+  // const stateCopy = { ...state };
 
   switch (action.type) {
     case types.CHANGE_PAGE:
       return {
-        ...stateCopy,
+        ...state,
         page: action.payload,
       }
       
     case types.SIGN_UP:
       return {
-        ...stateCopy,
+        ...state,
         page: 'signUp',
       };
 
     case types.LOGIN:
       return {
-        ...stateCopy,
+        ...state,
         page: 'login',
       };
 
     case types.COMMUNITY:
       return {
-        ...stateCopy,
+        ...state,
         page: 'community',
       };
 
     case types.PROFILE:
       return {
-        ...stateCopy,
+        ...state,
         page: 'profile',
       };
 
     default:
-      return stateCopy;
+      return state;
   }
 };
 

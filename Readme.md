@@ -37,14 +37,14 @@ Pages
 /profile*
   GET, POST, or DELETE
   GET
-  /profile?username=value&location=value
+  /profile?username=value&lat=value&long=value
   { username: value, lat: value, long: value }
   response = { 
     birds: [ { comBirdName: value, sciBirdName: value }, {...}, ... ],
     seenBirds: [ { comBirdName: value, sciBirdName: value, timeStamp: value }. {...}, ... ]
     }
   POST
-  /profile/self?username=value&location=value&timeStamp...
+  /profile/self?username=value&lat=value&long-value&timeStamp=value&sciBirdName=value // lat/long to two decimal points
   { username: value, lat: value, long: value, timeStamp: value, commBirdName, sciBirdName }
   response = { valid: boolean }
   POST

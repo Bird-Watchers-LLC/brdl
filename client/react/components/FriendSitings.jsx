@@ -21,7 +21,7 @@ class FriendSitings extends Component {
   }
 
   getFriendMessages() {
-    const url = `http://localhost:3000/Friend/everyone?username=${this.props.username}`
+    const url = `http://localhost:3000/Friend/?username=${this.props.username}`
 
     if (this.props.mode === 'dev') this.props.updateFriendMessagesActionCreator(this.props.testMessages);
     else if (this.props.mode === 'prod') {
@@ -40,9 +40,12 @@ class FriendSitings extends Component {
     const display = [];
 
     if (this.props.friendMessages instanceof Array) {
-      this.props.friendMessages.forEach((mess, ind) => {
-        display.push(<p key={`fM${ind}`}>{`${mess.username} saw a ${mess.sciBirdName} in ${mess.location.area} around ${mess.timeStamp}`}</p>)
-      })
+      if (this.props.friendMessages.length === 0) display.push(<h2 key='noMessFr'>No friend messages available at this time.</h2>)
+      else {
+        this.props.friendMessages.forEach((mess, ind) => {
+          display.push(<p key={`fM${ind}`}>{`${mess.username} saw a ${mess.sciBirdName} in ${mess.location.area} around ${mess.timeStamp}`}</p>)
+        })
+      }
     } else display.push(<h1 key='oopsy'>Error with friendMessages</h1>);
 
     return (

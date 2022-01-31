@@ -6,23 +6,23 @@ const initialState = {
 };
 
 const birdsReducer = (state = initialState, action) => {
-  const stateCopy = { ...state };
+  // const stateCopy = { ...state };
 
   switch (action.type) {
     case types.UPDATE_SEEN_BIRDS:
       return {
-        ...stateCopy,
+        ...state,
         seenBirds: action.payload,
       };
 
     case types.UPDATE_LOCAL_BIRDS:
       return {
-        ...stateCopy,
+        ...state,
         localBirds: action.payload,
       };
 
     default:
-      return stateCopy;
+      return state;
   }
 };
 
