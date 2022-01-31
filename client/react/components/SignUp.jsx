@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => ({
   createAccountSubmitActionCreator: (e, mode, serverRes) =>
     dispatch(actions.createAccountSubmitActionCreator(e, mode, serverRes)), // remove server res argument when not needed
   changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
-  changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator),
+  changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
 });
 
 class SignUp extends Component {
@@ -31,25 +31,35 @@ class SignUp extends Component {
 
   handleAccountSubmit(e, mode, serverRes) {
     e.preventDefault();
-    console.log(e, { mode }, { serverRes });
+    // console.log(e, { mode }, { serverRes });
     let queryRes;
-    if (mode === 'dev') {
+
+    if (this.props.mode === 'dev') {
+      console.log('here');
+      console.log(this.props.signUpPost.valid);
       if (this.props.signUpPost.valid) this.props.changeToProfilePageActionCreator();
       else this.props.createAccountSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `/gainAccess/?username=${this.props.username}&password=${this.props.username}&name=${this.props.fullName}`;
+      const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}&fullName=${this.props.fullName}`;
       const options = {
         method: 'POST',
-        header: {
-          'Content-Type': 'text/html',
-          Accept: 'application/json',
+        headers: {
+          // 'Content-Type': 'text/html',
+          // Accept: 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
       };
-      fetch(url, options).then(res => {
-        if (res.valid) this.props.changeToProfilePageActionCreator();
-        else this.props.createAccountSubmitActionCreator();
-      });
+      fetch(url, options)
+        .then(res => {
+          console.log('server response', res);
+          return res.json();
+        })
+        .then(data => {
+          console.log('dta', data);
+          if (res.valid) this.props.changeToProfilePageActionCreator();
+          else this.props.createAccountSubmitActionCreator();
+        });
     }
 
     /*
@@ -75,10 +85,7 @@ class SignUp extends Component {
       <div>
         <h1>New to brdl? Create an account!</h1>
         {this.props.validUser === false ? <p>Incorrect username or password</p> : <p></p>}
-        <form
-          action=""
-          onSubmit={e => this.handleAccountSubmit(e, this.props.mode, this.props.signUpPost)}
-        >
+        <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             Create a username:
             <input
