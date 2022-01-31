@@ -27,16 +27,14 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.png$/i,
         type: 'asset/resource',
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
-        options: {
-          publicPath: 'assets/img',
-        },
+        use: 'file-loader',
+        // options: {
+        //   publicPath: path.resolve(__dirname, 'build'),
+        // },
+        //   },
+        // ],
       },
     ],
   },
