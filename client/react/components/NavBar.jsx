@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import LogoIcon from '../../../assets/img/brdl-logo-2-b.png';
 import LogoText from '../../../assets/img/brdl-logo-2-c.png';
 
+const mapStateToProps = state => ({});
+
+const mapStateToDispatch = dispatch => ({});
+
 class NavBar extends Component {
   constructor(props) {
     super(props);
@@ -21,16 +25,24 @@ class NavBar extends Component {
         <div className="nav-nav-container">
           <ul>
             <li>
-              <a href="#">Sign Up</a>
+              <a href="#" onClick={this.props.navigationActions.changeToSignUpPageActionCreator}>
+                Sign Up
+              </a>
             </li>
             <li>
-              <a href="#">Login</a>
+              <a href="#" onClick={this.props.navigationActions.changeToLoginPageActionCreator}>
+                Login
+              </a>
             </li>
             <li>
-              <a href="#">Community</a>
+              <a href="#" onClick={this.props.navigationActions.changeToCommunityPageActionCreator}>
+                Community
+              </a>
             </li>
             <li>
-              <a href="#">My Profile</a>
+              <a href="#" onClick={this.props.navigationActions.changeToProfilePageActionCreator}>
+                My Profile
+              </a>
             </li>
             <li>
               <a href="#">Settings</a>

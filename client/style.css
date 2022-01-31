@@ -1,3 +1,34 @@
+/*
+Colors
+
+hero 1: #f7bf5a
+hero 2: #261803
+
+shade 1: deac51
+shade 2: c69948
+shad 3: ad863f
+
+shade 5: 7c602d
+shade 6: 634c24
+shae 7: 312612
+
+tint 1: f8c56b
+tint 2: f9cc7b
+tint 3: f9d28c
+tint 4: fad99c
+tint 5: fbdfad
+
+tint 8: fdf2de
+tint 9: fef9ef
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .dev {
   position: absolute;
   bottom: 0;
@@ -5,17 +36,22 @@
 }
 
 body {
-  background-color: rgb(247, 191, 90);
-  color: rgb(38, 24, 3);
+  background-color: #fdf2de;
+  color: #261803#261803;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
     Verdana, sans-serif;
+  /* padding: 0; */
 }
 
 .nav-bar-container {
   display: flex;
   justify-content: space-between;
-  margin: 20px 20px;
+  padding: 16px 20px;
   margin-bottom: 80px;
+  background-color: #f7bf5a;
+  position: sticky;
+  top: 0;
+  align-items: center;
 }
 
 .nav-logo {
@@ -27,18 +63,96 @@ body {
   display: flex;
   list-style: none;
   gap: 13px;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .nav-bar-container a:link,
 .nav-bar-container a:visited {
   text-decoration: none;
   color: inherit;
+  padding: 8px 16px;
+  border-radius: 10px;
+  transition: all, 0.2s;
+}
+
+.nav-bar-container a:hover,
+.nav-bar-container a:active {
+  background-color: #312612;
+  color: #eee;
 }
 
 .signup-container {
-  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  padding: 50px;
+  width: 675px;
   margin: 0 auto;
-  border: rgb(38, 24, 3) solid 3px;
+  border: #261803 solid 3px;
   border-radius: 10px;
-  box-shadow: 3px 3px 8px 1px rgba(38, 24, 3, 0.176);
+  box-shadow: 3px 3px 8px 1px #2618033b;
+}
+
+.signup-container header {
+  margin-bottom: 60px;
+}
+
+.signup-container h1 {
+  margin-top: 0;
+  margin-bottom: 32px;
+}
+
+.signup-container p {
+  font-size: 18px;
+}
+
+.signup-container form {
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #fbdfad;
+  border-radius: 10px;
+}
+
+.signup-container form label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.signup-container input {
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  color: #261803;
+  box-shadow: 0 0 0 0;
+  border: none;
+}
+
+input:focus {
+  outline: 2px solid #261803;
+}
+
+.create-account-btn {
+  background-color: #261803;
+  color: #eee;
+  display: inline-block;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 18px;
+  border-radius: 10px;
+  transition: all, 0.2s;
+}
+
+.create-account-btn:hover {
+  cursor: pointer;
+  background-color: #f7bf5a;
+  color: #261803;
 }

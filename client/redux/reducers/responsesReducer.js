@@ -1,7 +1,7 @@
 import * as types from '../constants/actionTypes';
 
 const initialState = {
-  mode: 'production',
+  mode: 'dev',
   signUpPost: {
     valid: true,
   },

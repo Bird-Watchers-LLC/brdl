@@ -39,7 +39,14 @@ class App extends Component {
 
     return (
       <div>
-        <Navbar />
+        <Navbar
+          navigationActions={{
+            changeToSignUpPageActionCreator: this.props.changeToSignUpPageActionCreator,
+            changeToLoginPageActionCreator: this.props.changeToLoginPageActionCreator,
+            changeToCommunityPageActionCreator: this.props.changeToCommunityPageActionCreator,
+            changeToProfilePageActionCreator: this.props.changeToProfilePageActionCreator,
+          }}
+        />
         {display}
         <div className="dev">
           <button key="cB" onClick={this.props.changeToCommunityPageActionCreator}>
