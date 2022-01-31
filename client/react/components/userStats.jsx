@@ -21,7 +21,22 @@ class UserStats extends Component {
     super(props)
 
     this.getBirds = this.getBirds.bind(this);
+    this.getLocation = this.getLocation.bind(this);
+    this.getTime = this.getTime.bind(this);
     // this.getBirdImages = this.getBirdImages.bind(this);
+  }
+
+  getLocation() {
+    navigator.geolocation.getCurrentPosition((loc) => {
+      const lat = Math.floor(loc.coords.latitude * 100) / 100, // Sets to 2 decimal places
+        long = Math.floor(loc.coords.longitude * 100) / 100; // Sets to 2 decimal places
+
+      return loc = { lat: lat, long: long }
+    }, (err) => console.log(err))
+  }
+
+  getTime() {
+
   }
 
   getBirds() {
@@ -60,6 +75,8 @@ class UserStats extends Component {
   // }
 
   componentDidMount() {
+    new Promise(this.getTime).then(loc => console.log(loc));
+    console.log(this.getLocation());
     this.getBirds();
   }
 
