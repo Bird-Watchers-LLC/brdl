@@ -82,32 +82,35 @@ body {
   color: #eee;
 }
 
-.signup-container {
+.signup-container,
+.login-container {
   display: flex;
   flex-direction: column;
   gap: 0px;
   padding: 50px;
   width: 675px;
   margin: 0 auto;
+  margin-top: 100px;
   border: #261803 solid 3px;
   border-radius: 10px;
   box-shadow: 3px 3px 8px 1px #2618033b;
 }
 
-.signup-container header {
+header {
   margin-bottom: 60px;
 }
 
-.signup-container h1 {
+h1 {
+  /* font-family: 'Bebas Neue'; */
   margin-top: 0;
   margin-bottom: 32px;
 }
 
-.signup-container p {
+p {
   font-size: 18px;
 }
 
-.signup-container form {
+form {
   padding: 50px;
 
   display: flex;
@@ -117,13 +120,13 @@ body {
   border-radius: 10px;
 }
 
-.signup-container form label {
+form label {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.signup-container input {
+input {
   font-size: 18px;
   padding: 4px 8px;
   border-radius: 10px;
@@ -136,7 +139,8 @@ input:focus {
   outline: 2px solid #261803;
 }
 
-.create-account-btn {
+.create-account-btn,
+.login-btn {
   background-color: #261803;
   color: #eee;
   display: inline-block;
@@ -149,9 +153,11 @@ input:focus {
   font-size: 18px;
   border-radius: 10px;
   transition: all, 0.2s;
+  font-weight: 600;
 }
 
-.create-account-btn:hover {
+.create-account-btn:hover,
+.login-btn:hover {
   cursor: pointer;
   background-color: #f7bf5a;
   color: #261803;

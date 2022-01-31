@@ -7,7 +7,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
   },
-  plugins: [new HtmlWebpackPlugin({ template: path.join(__dirname, 'index.html') })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: path.join(__dirname, 'index.html'), filename: 'index.html' }),
+  ],
   module: {
     rules: [
       {
@@ -26,17 +28,21 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      // {
+      //   test:  /\.png/,
+      //   type: 'asset/resource'
+      // }
       {
         test: /\.(png|svg|jpe?g|gif)$/i,
+        include: path.resolve(__dirname, './assets/img'),
         type: 'asset/resource',
-        use: [
-          'file-loader',
-          {
-            options: {
-              publicPath: 'build',
-            },
+        use: {
+          loader: 'file-loader',
+
+          options: {
+            publicPath: path.resolve(__dirname, './build'),
           },
-        ],
+        },
       },
     ],
   },

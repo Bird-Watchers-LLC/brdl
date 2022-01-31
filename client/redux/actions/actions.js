@@ -36,4 +36,9 @@ export const createAccountSubmitActionCreator = (e, mode, serverRes) => ({
   payload: { e, mode, serverRes },
 });
 
+export const loginSubmitActionCreator = (e, mode, serverRes) => ({
+  type: types.LOGIN_SUBMIT,
+  payload: { e, mode, serverRes },
+});
+
 // export default login;

@@ -1,7 +1,12 @@
 // import path from 'path';
 import React, { Component } from 'react';
+
 import LogoIcon from '../../../assets/img/brdl-logo-2-b.png';
 import LogoText from '../../../assets/img/brdl-logo-2-c.png';
+
+// const img = require('')
+
+console.log('navbar component');
 
 const mapStateToProps = state => ({});
 
@@ -12,12 +17,18 @@ class NavBar extends Component {
     super(props);
   }
 
+  // <img src={require('/images/image-name.png')} />
+
   render() {
     return (
-      <div className="nav-bar-container">
+      <div className="nav-bar-container" key="nv">
         <div className="nav-logo-container">
-          <a href="#">{/* <img className="nav-logo nav--icon" src={LogoIcon} /> */}</a>
-          <a href="#">{/* <img className="nav-logo nav--text" src={LogoText} /> */}</a>
+          <a href="#">
+            <img className="nav-logo nav--icon" src={LogoIcon} />
+          </a>
+          <a href="#">
+            <img className="nav-logo nav--text" src={LogoText} />
+          </a>
         </div>
         <div className="nav-nav-container">
           <ul>

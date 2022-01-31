@@ -48,14 +48,14 @@ class App extends Component {
           }}
         />
         {display}
-        <div className="dev">
+        {/* <div className="dev">
           <button key="cB" onClick={this.props.changeToCommunityPageActionCreator}>
             Dev jump to community page
           </button>
           <button key="pB" onClick={this.props.changeToProfilePageActionCreator}>
             Dev jump to profile page
           </button>
-        </div>
+        </div> */}
       </div>
     );
   }
