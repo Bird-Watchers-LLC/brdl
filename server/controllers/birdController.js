@@ -63,7 +63,7 @@ birdController.seen = async (req, res, next) => {
             await db.query(queryInsert, [sciBirdName]);
             console.log('BIRD ADDED TO TABLE')
         }
-        // insert 
+        // insert into the seen_bird table username, bird see, and time seen
         const querySeen = `INSERT INTO seen_birds (username, scientific_name, time_stamp) VALUES ($1, $2, CURRENT_TIMESTAMP) RETURNING time_stamp`
         const seenResult = await db.query(querySeen, [username, sciBirdName]);
         timeSeen = seenResult.rows[0].time_stamp;
