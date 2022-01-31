@@ -9,11 +9,11 @@ import ProfileContainer from '../containers/ProfileContainer.jsx';
 const mapStateToProps = state => ({ page: state.navigation.page });
 
 const mapDispatchToProps = dispatch => ({
-  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)),
-  changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
-  changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
-  changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
-  changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
+  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)), // Replaces the four below it
+  // changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
+  // changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
+  // changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
+  // changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
 });
 
 class App extends Component {

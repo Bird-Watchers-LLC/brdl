@@ -21,6 +21,7 @@ class UserStats extends Component {
     super(props)
 
     this.getBirds = this.getBirds.bind(this);
+    // this.getBirdImages = this.getBirdImages.bind(this);
   }
 
   getBirds() {
@@ -28,6 +29,7 @@ class UserStats extends Component {
 
       this.props.updateSeenBirdsActionCreator(this.props.testSeenBirds);
       this.props.updateLocalBirdsActionCreator(this.props.testLocalBirds);
+      // this.getBirdImages(this.props.testLocalBirds);
 
     } else if (this.props.mode === 'prod'){
 
@@ -38,11 +40,24 @@ class UserStats extends Component {
         .then((data) => {
           this.props.updateSeenBirdsActionCreator(data.seenBirds);
           this.props.updateLocalBirdsActionCreator(data.birds);
+          // this.getBirdImages(data.birds);
         })
         .catch(err => console.log(err));
 
     } else console.log('Mode must be prod or dev in ./client/reducers/responsesReducer.js');
   }
+
+  // getBirdImages(birds) {
+  //   console.log('birds', birds);
+  //   for (let ind = 0; ind < 1; ind ++) {
+  //     const url = `https://serpapi.com/search.json?q=${birds[ind].sciBirdName}&tbm=isch&ijn=0&api_key=a1e062b7f426e91cf08f091ba3753a8ce04019b3ca9c52c4886c818b9920ae8a`;
+  //     fetch(url, {method: 'GET', header: {'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' }})
+  //       .then(iamge => image.json())
+  //       .then(image => {
+  //         console.log(image)
+  //       })
+  //   }
+  // }
 
   componentDidMount() {
     this.getBirds();
