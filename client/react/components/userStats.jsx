@@ -33,21 +33,20 @@ class UserStats extends Component {
   getBirds(locInfo) {
 
     if (this.props.mode === 'dev') {
-      console.log('Loc', this.props.lat, this.props.long)// delete
+
       this.props.updateSeenBirdsActionCreator(this.props.testSeenBirds);
       this.props.updateLocalBirdsActionCreator(this.props.testLocalBirds);
-      console.log('Location', this.props.lat, this.props.long);// delete
-      console.log('state', this.props)// delete
       // this.getBirdImages(this.props.testLocalBirds);
 
     } else if (this.props.mode === 'prod'){
 
-      const url = `http://localhost:3000/community/everyone?username=${this.props.username}&lat=${this.props.lat}&long=${this.props.long}`
+      const url = `http://localhost:3000/profile?username=${this.props.username}&lat=${this.props.lat}&long=${this.props.long}`
 
       fetch(url, {method: 'GET', header: {'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' }})
         .then(data => data.json())
         .then((data) => {
-          this.props.updateSeenBirdsActionCreator(data.seenBirds);
+          console.log(data)
+          if ('seenBirds' in data)this.props.updateSeenBirdsActionCreator(data.seenBirds);
           this.props.updateLocalBirdsActionCreator(data.birds);
           // this.getBirdImages(data.birds);
         })
@@ -55,18 +54,6 @@ class UserStats extends Component {
 
     } else console.log('Mode must be prod or dev in ./client/reducers/responsesReducer.js');
   }
-
-  // getBirdImages(birds) {
-  //   console.log('birds', birds);
-  //   for (let ind = 0; ind < 1; ind ++) {
-  //     const url = `https://serpapi.com/search.json?q=${birds[ind].sciBirdName}&tbm=isch&ijn=0&api_key=a1e062b7f426e91cf08f091ba3753a8ce04019b3ca9c52c4886c818b9920ae8a`;
-  //     fetch(url, {method: 'GET', header: {'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' }})
-  //       .then(iamge => image.json())
-  //       .then(image => {
-  //         console.log(image)
-  //       })
-  //   }
-  // }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition((loc) => {
@@ -99,7 +86,8 @@ class UserStats extends Component {
           seenBirdsInThisArea++;
           seen = 'Has been seen.';
         }
-        display.push(<p key={`cM${ind}`}>{`${bird.sciBirdName} is in the area. ${seen}`}</p>)
+
+        display.push(<p key={`cM${ind}`}>{`${bird.sciName} is in the area. ${seen}`}</p>)
       })
 
       display.unshift(<h2 key='h2US'>{`You have seen ${totalSeenBirds}.\nYou have seen ${seenBirdsInThisArea} out of ${totalBirdsInArea} in the area`}</h2>)
