@@ -13,24 +13,31 @@ app.use(express.urlencoded({ extended: true }));// Helps parse different data ty
 // handle GET & POST requests to /gainAccess
 
 // Login route
-app.get('/gainAccess', userController.auth, (req, res) => {
   // middleware will return a boolean.
   // if false, res.send('Login credentials are invalid')
   // else, direct user to the profile page
+app.get('/gainAccess', userController.auth, (req, res) => {
   res.status(200).json(res.locals.auth)
 });
 
 // Account creation
-app.post('/gainAccess', userController.create, (req, res) => {
   // mw will return a boolean
   // if false, res.send('Account creation failed')
   // else, direct user to profile page
+app.post('/gainAccess', userController.create, (req, res) => {
   res.status(200).json(res.locals.auth)
 });
 
-// User profile - client will send a GET request to /profile with this info: 
-//{ username: value, lat: value, long: value }
-//// mw will return 
+// User profile - get local birds in current area 
+// client will send a GET request to /profile with { username: value, lat: value, long: value }
+// for 10 birds, mw will return { birds: [{sciName: "", locName: ""}, {...}]}
+app.get('/profile', birdController.nearby, (req, res) => {
+  res.status(200).json(res.locals.nearby);
+})
+
+// app.post('/profile', birdController.seen, (req,res) => {
+//   res.status.json(res.locals.seen)
+// })
 
 // Local error handler (404/missing routes)
 app.use('*', (req, res) => {
