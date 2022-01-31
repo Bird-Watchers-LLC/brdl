@@ -40,7 +40,6 @@ birdController.nearby = async (req, res, next) => {
         // db.query(queryString)
         // .then(() => console.log('successfully added'));
 
-
         return next();
     } catch (err) {
         return next({
@@ -53,19 +52,18 @@ birdController.nearby = async (req, res, next) => {
 
 // POST -- when user clicks on a bird they have seen in the area, client will provide username, lat/long, timeStamp, commBirdName, sciBirdName
 // querey database to insert bird into the database
-// we will respond with T/F if bird was successfully added to database
 birdController.seen = async (req, res, next) => {
     try {
         const { username, sciBirdName } = req.query;
-        // check if the bird exists in birds table, if it does, move into next step; if it doesn't insert into birds table
+        // check if the bird exists in birds table, if it doesn't insert into birds table
         const queryString = "SELECT * FROM Birds WHERE scientific_name=$1"
         const queryResult = await db.query(queryString, [sciBirdName]);
-        // if (!queryResult.rows.length) {
-        //     const queryInsert = `INSERT INTO Birds (scientific_name, common_name) VALUES ($1, 'unknown')`
-        //     await db.query(queryInsert, [sciBirdName]);
-        //     console.log('BIRD ADDED TO TABLE')
-        // } 
-        // create an entry into the seen birds table where we provide username, sciname, and timestamp
+        if (!queryResult.rows.length) {
+            const queryInsert = `INSERT INTO Birds (scientific_name, common_name) VALUES ($1, 'unknown')`
+            await db.query(queryInsert, [sciBirdName]);
+            console.log('BIRD ADDED TO TABLE')
+        }
+        // insert 
         const querySeen = `INSERT INTO seen_birds (username, scientific_name, time_stamp) VALUES ($1, $2, CURRENT_TIMESTAMP) RETURNING time_stamp`
         const seenResult = await db.query(querySeen, [username, sciBirdName]);
         timeSeen = seenResult.rows[0].time_stamp;
