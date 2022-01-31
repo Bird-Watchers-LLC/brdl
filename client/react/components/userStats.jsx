@@ -36,9 +36,9 @@ class UserStats extends Component {
 
       this.props.updateSeenBirdsActionCreator(this.props.testSeenBirds);
       this.props.updateLocalBirdsActionCreator(this.props.testLocalBirds);
-      // this.getBirdImages(this.props.testLocalBirds);
 
     } else if (this.props.mode === 'prod'){
+
 
       const url = `http://localhost:3000/profile?username=${this.props.username}&lat=${this.props.lat}&long=${this.props.long}`
 
