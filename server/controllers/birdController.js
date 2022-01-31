@@ -9,7 +9,6 @@ const birdController = {};
 
 birdController.nearby = async (req, res, next) => {
     const { username, lat, long } = req.query;
-    const tenBirds = [];
          // lat/long must be up to 2 decimal points
     try {
         const apiResponse = await axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${lat}&lng=${long}&maxResults=10`, {
@@ -22,6 +21,7 @@ birdController.nearby = async (req, res, next) => {
             locName: bird.locName
         }))
         res.locals.nearby = { birds: newBirdList }; 
+        
         // may need to insert 10 birds into db here, but will need to ensure scientific_name type is set to UNIQUE
         return next();
     } catch (err) {
@@ -38,7 +38,7 @@ birdController.nearby = async (req, res, next) => {
 // we will respond with T/F if bird was successfully added to database
 // birdController.seen = async (req, res, next) => {
 //     try {
-//         const { username, lat, long, timeStamp, commBirdName, sciBirdName } = req.query;
+//         const { username, lat, long, timeStamp, sciBirdName } = req.query;
 //         const queryString = `INSERT INTO seen_birds (username, scientific_name, time_stamp) VALUES ($1, $2, $3)`
 //         const queryResult = await db.query(queryString, [username, sciBirdName, timeStamp]);
 //         console.log(queryResult);
