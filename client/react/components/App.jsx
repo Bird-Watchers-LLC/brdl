@@ -6,7 +6,7 @@ import Login from './Login.jsx';
 import CommunityContainer from '../containers/CommunityContainer.jsx';
 import ProfileContainer from '../containers/ProfileContainer.jsx';
 import Logo from '../../../assets/img/brdl-logo-2-b.png';
-import Logo2 from '../../../assets/img/brdl-logos-2.jpeg';
+// import Logo2 from '../../../assets/img/brdl-logos-2.jpeg';
 
 const mapStateToProps = state => ({ page: state.navigation.page });
 
@@ -29,7 +29,7 @@ class App extends Component {
     // logoImg.src = Logo;
     // console.log(logoImg);
 
-    console.log(Logo);
+    // console.log(Logo);
 
     // const display = [logoImg];
     const display = [<img src={Logo} />];
@@ -48,7 +48,8 @@ class App extends Component {
     return (
       <div>
         <img src={Logo} />
-        <img src={Logo2} />
+
+        {/* <img src={Logo2} /> */}
         {display}
         <div className="dev">
           <button key="cB" onClick={this.props.changeToCommunityPageActionCreator}>
