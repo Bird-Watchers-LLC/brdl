@@ -83,7 +83,8 @@ class SignUp extends Component {
 
     return (
       <div>
-        <h1>New to brdl? Create an account!</h1>
+        <h1>New to brd wtchng?</h1>
+        <h2>Create a brdl account and get started today!</h2>
         {this.props.validUser === false ? <p>Incorrect username or password</p> : <p></p>}
         <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
           <label htmlFor="username">

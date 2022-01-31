@@ -5,6 +5,7 @@ import SignUp from './SignUp.jsx';
 import Login from './Login.jsx';
 import CommunityContainer from '../containers/CommunityContainer.jsx';
 import ProfileContainer from '../containers/ProfileContainer.jsx';
+import Logo from '../../../assets/img/brdl-logo-2-b.png';
 
 const mapStateToProps = state => ({ page: state.navigation.page });
 
@@ -21,7 +22,13 @@ class App extends Component {
   }
 
   render() {
-    const display = [<h1 key="title">brdl</h1>];
+    // const display = [<h1 key="title">brdl</h1>];
+
+    const logoImg = new Image();
+    logoImg.src = Logo;
+    console.log(logoImg);
+
+    const display = [<img src={logoImg} />];
     if (this.props.page === 'signUp') {
       display.push(<SignUp key="su" />);
       // display.push(<h2 key='signUp'>Sign Up</h2>);
