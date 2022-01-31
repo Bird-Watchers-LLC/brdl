@@ -41,12 +41,13 @@ class App extends Component {
     return (
       <div>
         <Navbar
-          navigationActions={{
-            changeToSignUpPageActionCreator: this.props.changeToSignUpPageActionCreator,
-            changeToLoginPageActionCreator: this.props.changeToLoginPageActionCreator,
-            changeToCommunityPageActionCreator: this.props.changeToCommunityPageActionCreator,
-            changeToProfilePageActionCreator: this.props.changeToProfilePageActionCreator,
-          }}
+          // navigationActions={{
+          //   changeToSignUpPageActionCreator: this.props.changeToSignUpPageActionCreator,
+          //   changeToLoginPageActionCreator: this.props.changeToLoginPageActionCreator,
+          //   changeToCommunityPageActionCreator: this.props.changeToCommunityPageActionCreator,
+          //   changeToProfilePageActionCreator: this.props.changeToProfilePageActionCreator,
+          // }}
+          changePageActionCreator={this.props.changePageActionCreator}
         />
         {display}
         {/* <div className="dev">

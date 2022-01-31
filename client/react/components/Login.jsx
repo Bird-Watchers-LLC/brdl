@@ -47,10 +47,10 @@ class Login extends Component {
       const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}`;
       const options = {
         method: 'GET',
-        headers: {
-          'Content-Type': 'text/html',
-          Accept: 'application/json',
+        header: {
           'Access-Control-Allow-Origin': ' * ',
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
       };
       fetch(url, options)

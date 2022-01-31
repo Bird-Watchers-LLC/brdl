@@ -46,11 +46,7 @@ class SignUp extends Component {
       const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}&fullName=${this.props.fullName}`;
       const options = {
         method: 'POST',
-        headers: {
-          // 'Content-Type': 'text/html',
-          // Accept: 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
+        header: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
       };
       fetch(url, options)
         .then(res => {

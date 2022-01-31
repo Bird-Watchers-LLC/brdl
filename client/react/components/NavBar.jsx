@@ -33,22 +33,22 @@ class NavBar extends Component {
         <div className="nav-nav-container">
           <ul>
             <li>
-              <a href="#" onClick={this.props.navigationActions.changeToSignUpPageActionCreator}>
+              <a href="#" onClick={() => this.props.changePageActionCreator('signUp')}>
                 Sign Up
               </a>
             </li>
             <li>
-              <a href="#" onClick={this.props.navigationActions.changeToLoginPageActionCreator}>
+              <a href="#" onClick={() => this.props.changePageActionCreator('login')}>
                 Login
               </a>
             </li>
             <li>
-              <a href="#" onClick={this.props.navigationActions.changeToCommunityPageActionCreator}>
+              <a href="#" onClick={() => this.props.changePageActionCreator('community')}>
                 Community
               </a>
             </li>
             <li>
-              <a href="#" onClick={this.props.navigationActions.changeToProfilePageActionCreator}>
+              <a href="#" onClick={() => this.props.changePageActionCreator('profile')}>
                 My Profile
               </a>
             </li>
