@@ -1,6 +1,7 @@
 const { query } = require('express');
 const db = require('../models/brdlModels');
 const axios = require('axios');
+const tokens = require('../tokens/tokens');
 
 const birdController = {};
 
@@ -12,14 +13,16 @@ birdController.nearby = async (req, res, next) => {
          // lat/long must be up to 2 decimal points
     try {
         const apiResponse = await axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${lat}&lng=${long}&maxResults=5`, {
-            headers: { "x-ebirdapitoken": "er9pqjjuc7rv" },
+            headers: { "x-ebirdapitoken": tokens.eBirdToken },
            })
         const newBirdList = apiResponse.data.map(bird => ({
             sciName: bird.sciName,
             comName: bird.comName,
             locName: bird.locName
         }))
-        res.locals.nearby = { birds: newBirdList };
+        const seenQuery = 'SELECT scientific_name, time_stamp FROM "public"."seen_birds" WHERE username=$1';
+        const seenResult = await db.query(seenQuery, [username]);
+        res.locals.nearby = { birds: newBirdList, seenBirds: seenResult.rows };
         // INSERTING ONE BY ONE
         const queryString = `INSERT INTO Birds (scientific_name, common_name) VALUES ($1, $2) ON CONFLICT (scientific_name) DO NOTHING`;
         newBirdList.forEach(async function (bird) {
