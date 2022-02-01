@@ -4,6 +4,7 @@ import * as actions from '../../redux/actions/actions.js';
 
 const mapStateToProps = state => ({
   mode: state.responses.mode,
+  username: state.textField.username,
   seenBirds: state.birds.seenBirds,
   localBirds: state.birds.localBirds,
   lat: state.textField.lat,
@@ -15,8 +16,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   updateSeenBirdsActionCreator: payload => dispatch(actions.updateSeenBirdsActionCreator(payload)),
-  updateLocalBirdsActionCreator: payload =>
-    dispatch(actions.updateLocalBirdsActionCreator(payload)),
+  updateLocalBirdsActionCreator: payload => dispatch(actions.updateLocalBirdsActionCreator(payload)),
   updateLocationActionCreator: payload => dispatch(actions.updateLocationActionCreator(payload)),
 });
 
@@ -33,18 +33,20 @@ class UserStats extends Component {
       this.props.seenBirds.push({ sciName: bird, timeStamp: '5pm' });
       this.props.updateSeenBirdsActionCreator(this.props.seenBirds.slice());
     } else if (this.props.mode === 'prod') {
-      const url = `http://localhost:3000/profile?username=${this.props.username}&lat=${this.props.lat}&long=${this.props.long}&sciName=${bird.sciName}`;
+      bird = bird.split(' ').join('_');
+      const url = `http://localhost:3000/profile?username=${this.props.username}&lat=${this.props.lat}&long=${this.props.long}&sciBirdName=${bird} `;
 
       fetch(url, {
-        method: 'GET',
+        method: 'POST',
         header: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
       })
         .then(data => data.json())
         .then(data => {
+          console.log(data)
           if ('sciName' in data) {
             this.props.seenBirds.push({ sciName: data.sciName, timeStamp: data.timeStamp });
             this.props.updateSeenBirdsActionCreator(this.props.seenBirds.slice());
-          } else console.log('Did to update on back end');
+          } else console.log('Failed to update on the back end');
         })
         .catch(err => console.log(err));
     } else console.log('Mode must be prod or dev in ./client/reducers/responsesReducer.js');
@@ -91,6 +93,7 @@ class UserStats extends Component {
       const totalSeenBirds = this.props.seenBirds.length,
         totalBirdsInArea = this.props.localBirds.length,
         seenBirdNames = this.props.seenBirds.reduce((acc, curr) => {
+          if ('sciName' in curr) curr.sciName = curr.sciName.split('_').join(' ')
           acc[curr.sciName] = true;
           return acc;
         }, {});
@@ -98,7 +101,10 @@ class UserStats extends Component {
 
       this.props.localBirds.forEach((bird, ind) => {
         let seen = 'Has not been seen.';
+        console.log('bird', bird)
+        console.log('seen birds', seenBirdNames)
         const birdSeen = bird.sciName in seenBirdNames;
+        console.log(birdSeen)
         if (birdSeen) {
           seenBirdsInThisArea++;
           seen = 'Has been seen.';
