@@ -56,6 +56,14 @@ const textFieldReducer = (state = initialState, action) => {
         fullName: newFullName,
       };
 
+    case types.RESET_FIELDS:
+      return {
+        ...state,
+        username: '',
+        password: '',
+        fullName: '',
+      };
+
     case types.CREATE_ACCOUNT_SUBMIT:
       // action.payload.e.preventDefault();
       // console.log(action.payload);
@@ -84,12 +92,18 @@ const textFieldReducer = (state = initialState, action) => {
       return {
         ...state,
         validUser: false,
+        // username: '',
+        // password: '',
+        // fullName: '',
       };
 
     case types.LOGIN_SUBMIT:
       return {
         ...state,
         validLogin: false,
+        // username: '',
+        // password: '',
+        // fullName: '',
       };
 
     default:

@@ -12,8 +12,8 @@ const navigationReducer = (state = initialState, action) => {
       return {
         ...state,
         page: action.payload,
-      }
-      
+      };
+
     case types.SIGN_UP:
       return {
         ...state,

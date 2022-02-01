@@ -1,9 +1,9 @@
 import * as types from '../constants/actionTypes.js';
 
-export const changePageActionCreator = (pl) => ({
+export const changePageActionCreator = pl => ({
   type: types.CHANGE_PAGE,
   payload: pl,
-})
+});
 
 export const changeToLoginPageActionCreator = () => ({
   type: types.LOGIN,
@@ -36,6 +36,10 @@ export const fullNameChangeActionCreator = e => ({
   payload: e,
 });
 
+export const resetFieldsActionCreator = () => ({
+  type: types.RESET_FIELDS,
+});
+
 export const createAccountSubmitActionCreator = (e, mode, serverRes) => ({
   type: types.CREATE_ACCOUNT_SUBMIT,
   payload: { e, mode, serverRes },
@@ -46,29 +50,29 @@ export const loginSubmitActionCreator = (e, mode, serverRes) => ({
   payload: { e, mode, serverRes },
 });
 
-export const updateSeenBirdsActionCreator = (pl) => ({
+export const updateSeenBirdsActionCreator = pl => ({
   type: types.UPDATE_SEEN_BIRDS,
-  payload: pl
-})
+  payload: pl,
+});
 
-export const updateLocalBirdsActionCreator = (pl) => ({
+export const updateLocalBirdsActionCreator = pl => ({
   type: types.UPDATE_LOCAL_BIRDS,
-  payload: pl
-})
+  payload: pl,
+});
 
-export const updateFriendMessagesActionCreator = (pl) => ({
+export const updateFriendMessagesActionCreator = pl => ({
   type: types.UPDATE_FRIEND_MESSAGES,
-  payload: pl
-})
+  payload: pl,
+});
 
-export const updateCommunityMessagesActionCreator = (pl) => ({
+export const updateCommunityMessagesActionCreator = pl => ({
   type: types.UPDATE_COMMUNITY_MESSAGES,
-  payload: pl
-})
+  payload: pl,
+});
 
-export const updateLocationActionCreator = (pl) => ({
+export const updateLocationActionCreator = pl => ({
   type: types.UPDATE_LOCATION,
-  payload: pl
-})
+  payload: pl,
+});
 
 // export default login;

@@ -18,9 +18,9 @@ class CommunityContainer extends Component {
     return (
       <div>
         {/* <button key='pB' onClick={() => this.props.changePageActionCreator('profile')}>Profile</button> */}
-        <h1>Community Sitings</h1>
+        <h1>Community Sightings</h1>
         <CommunitSitings />
-        <h1>Friend Sitings</h1>
+        <h1>Friend Sightings</h1>
         <FriendSitings />
       </div>
     );

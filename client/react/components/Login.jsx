@@ -60,7 +60,7 @@ class Login extends Component {
         })
         .then(data => {
           console.log('dta', data);
-          if (res.valid) this.props.changeToProfilePageActionCreator();
+          if (data.valid) this.props.changeToProfilePageActionCreator();
           else this.props.loginSubmitActionCreator();
         });
     }

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 import LogoIcon from '../../../assets/img/brdl-logo-2-b.png';
 import LogoText from '../../../assets/img/brdl-logo-2-c.png';
+import * as actions from '../../redux/actions/actions.js';
 
 // const img = require('')
 
@@ -33,12 +34,24 @@ class NavBar extends Component {
         <div className="nav-nav-container">
           <ul>
             <li>
-              <a href="#" onClick={() => this.props.changePageActionCreator('signUp')}>
+              <a
+                href="#"
+                onClick={() => {
+                  this.props.resetFieldsActionCreator();
+                  this.props.changePageActionCreator('signUp');
+                }}
+              >
                 Sign Up
               </a>
             </li>
             <li>
-              <a href="#" onClick={() => this.props.changePageActionCreator('login')}>
+              <a
+                href="#"
+                onClick={() => {
+                  this.props.resetFieldsActionCreator();
+                  this.props.changePageActionCreator('login');
+                }}
+              >
                 Login
               </a>
             </li>

@@ -10,6 +10,7 @@ import ProfileContainer from '../containers/ProfileContainer.jsx';
 const mapStateToProps = state => ({ page: state.navigation.page });
 
 const mapDispatchToProps = dispatch => ({
+  resetFieldsActionCreator: () => dispatch(actions.resetFieldsActionCreator()),
   changePageActionCreator: payload => dispatch(actions.changePageActionCreator(payload)), // Replaces the four below it
   // changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
   // changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
@@ -48,6 +49,7 @@ class App extends Component {
           //   changeToProfilePageActionCreator: this.props.changeToProfilePageActionCreator,
           // }}
           changePageActionCreator={this.props.changePageActionCreator}
+          resetFieldsActionCreator={this.props.resetFieldsActionCreator}
         />
         {display}
         {/* <div className="dev">
