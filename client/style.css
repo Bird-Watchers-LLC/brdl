@@ -83,7 +83,8 @@ body {
 }
 
 .signup-container,
-.login-container {
+.login-container,
+.component-container {
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -110,7 +111,12 @@ p {
   font-size: 18px;
 }
 
-form {
+.bird-row {
+  border: 1px solid #261803;
+}
+
+form,
+.component-sub-container {
   padding: 50px;
 
   display: flex;
@@ -140,7 +146,8 @@ input:focus {
 }
 
 .create-account-btn,
-.login-btn {
+.login-btn,
+.btn {
   background-color: #261803;
   color: #eee;
   display: inline-block;
@@ -157,7 +164,8 @@ input:focus {
 }
 
 .create-account-btn:hover,
-.login-btn:hover {
+.login-btn:hover,
+.btn:hover {
   cursor: pointer;
   background-color: #f7bf5a;
   color: #261803;

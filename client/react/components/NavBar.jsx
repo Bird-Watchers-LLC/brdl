@@ -25,30 +25,51 @@ class NavBar extends Component {
 
     if (this.props.currPage === 'signUp' || this.props.currPage === 'login') {
       display.push(
-        <li>
-          <a
-            href="#"
-            onClick={() => {
-              this.props.resetFieldsActionCreator();
-              this.props.changePageActionCreator('signUp');
-            }}
-          >
-            Sign Up
-          </a>
-        </li>
+        <ul>
+          <li>
+            <a
+              href="#"
+              onClick={() => {
+                this.props.resetFieldsActionCreator();
+                this.props.changePageActionCreator('signUp');
+              }}
+            >
+              Sign Up
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={() => {
+                this.props.resetFieldsActionCreator();
+                this.props.changePageActionCreator('login');
+              }}
+            >
+              Login
+            </a>
+          </li>
+        </ul>
       );
+    } else {
       display.push(
-        <li>
-          <a
-            href="#"
-            onClick={() => {
-              this.props.resetFieldsActionCreator();
-              this.props.changePageActionCreator('login');
-            }}
-          >
-            Login
-          </a>
-        </li>
+        <ul>
+          <li>
+            <a href="#" onClick={() => this.props.changePageActionCreator('community')}>
+              Community
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={() => this.props.changePageActionCreator('profile')}>
+              My Profile
+            </a>
+          </li>
+          <li>
+            <a href="#">Settings</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+        </ul>
       );
     }
     return (
@@ -61,50 +82,7 @@ class NavBar extends Component {
             <img className="nav-logo nav--text" src={LogoText} />
           </a>
         </div>
-        <div className="nav-nav-container">
-          <ul>
-            {display}
-            {/* <li>
-              <a
-                href="#"
-                onClick={() => {
-                  this.props.resetFieldsActionCreator();
-                  this.props.changePageActionCreator('signUp');
-                }}
-              >
-                Sign Up
-              </a>
-            </li> */}
-            {/* <li>
-              <a
-                href="#"
-                onClick={() => {
-                  this.props.resetFieldsActionCreator();
-                  this.props.changePageActionCreator('login');
-                }}
-              >
-                Login
-              </a>
-            </li> */}
-
-            <li>
-              <a href="#" onClick={() => this.props.changePageActionCreator('community')}>
-                Community
-              </a>
-            </li>
-            <li>
-              <a href="#" onClick={() => this.props.changePageActionCreator('profile')}>
-                My Profile
-              </a>
-            </li>
-            <li>
-              <a href="#">Settings</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-          </ul>
-        </div>
+        <div className="nav-nav-container">{display}</div>
       </div>
     );
   }

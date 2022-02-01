@@ -37,7 +37,7 @@ class SignUp extends Component {
 
     if (this.props.mode === 'dev') {
       console.log('here');
-      this.props.signUpPost.valid = false;
+      // this.props.signUpPost.valid = false;
       console.log(this.props.signUpPost.valid);
       if (this.props.signUpPost.valid) this.props.changeToProfilePageActionCreator();
       else this.props.createAccountSubmitActionCreator();
