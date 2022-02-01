@@ -13,7 +13,6 @@ const initialState = {
 };
 
 const textFieldReducer = (state = initialState, action) => {
-  console.log('type', action.type);
 
   const updateTextPerLetter = typeOfField => {
     let curStateVal = state[typeOfField];

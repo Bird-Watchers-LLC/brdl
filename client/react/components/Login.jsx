@@ -33,13 +33,9 @@ class Login extends Component {
     e.preventDefault();
     // console.log(e, { mode }, { serverRes });
     let queryRes;
-    console.log(this.props);
-    console.log(e, this.props.mode);
 
     if (this.props.mode === 'dev') {
-      console.log('here');
       // this.props.loginGet.valid = false;
-      console.log(this.props.loginGet.valid);
       if (this.props.loginGet.valid) this.props.changeToProfilePageActionCreator();
       else this.props.loginSubmitActionCreator();
     } else {
@@ -54,12 +50,8 @@ class Login extends Component {
         },
       };
       fetch(url, options)
-        .then(res => {
-          console.log('server response', res);
-          return res.json();
-        })
+        .then(res => res.json())
         .then(data => {
-          console.log('dta', data);
           if (data.valid) this.props.changeToProfilePageActionCreator();
           else this.props.loginSubmitActionCreator();
         });
@@ -88,7 +80,7 @@ class Login extends Component {
           <label htmlFor="password">
             <p>Password:</p>
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="enter password"
