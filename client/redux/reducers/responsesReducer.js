@@ -27,7 +27,7 @@ const testLocalBirds = [
 ];
 
 const initialState = {
-  mode: 'dev',
+  mode: 'prod',
   signUpPost: {
     valid: true,
   },

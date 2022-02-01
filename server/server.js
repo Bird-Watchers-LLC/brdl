@@ -45,6 +45,9 @@ app.get('/profile', birdController.nearby, (req, res) => {
 });
 
 app.post('/profile', birdController.seen, (req,res) => {
+  res.set('Access-Control-Allow-Origin', ' * ');
+  res.set('Content-Type', 'application/json');
+  
   res.status(200).json(res.locals.seen);
 })
 
