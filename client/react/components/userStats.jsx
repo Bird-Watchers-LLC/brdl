@@ -120,7 +120,10 @@ class UserStats extends Component {
       });
 
       display.unshift(
-        <h2 key="h2US">{`You have seen ${totalSeenBirds}.\nYou have seen ${seenBirdsInThisArea} out of ${totalBirdsInArea} in the area`}</h2>
+        <h2
+          className="seen-birds-header"
+          key="h2US"
+        >{`You have seen ${totalSeenBirds}.\nYou have seen ${seenBirdsInThisArea} out of ${totalBirdsInArea} in the area`}</h2>
       );
     } else display.push(<h1 key="oops">Error with localBirds</h1>);
 

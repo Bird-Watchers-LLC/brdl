@@ -107,8 +107,12 @@ h1 {
   margin-bottom: 32px;
 }
 
-p {
-  font-size: 18px;
+.profile-header {
+  margin-bottom: 20px;
+}
+
+.seen-birds-header {
+  margin-bottom: 20px;
 }
 
 .bird-row {
