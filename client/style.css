@@ -137,6 +137,10 @@ h1 {
   padding: 8px 16px;
 }
 
+.friend-sighting-heading {
+  margin-top: 50px;
+}
+
 form,
 .component-sub-container {
   padding: 50px;

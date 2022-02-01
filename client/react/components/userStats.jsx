@@ -137,7 +137,7 @@ class UserStats extends Component {
     } else display.push(<h1 key="oops">Error with localBirds</h1>);
 
     return (
-      <div key="cMD" className="component-sub-container ">
+      <div key="cMD" className="component-sub-container">
         {display}
       </div>
     );
