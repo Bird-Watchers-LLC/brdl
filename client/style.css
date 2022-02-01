@@ -121,9 +121,16 @@ h1 {
   margin-bottom: 20px;
 }
 
-.bird-row {
+.bird-row,
+.bird-row-seen {
   border: 2px solid #261803;
   border-radius: 10px;
+}
+
+.bird-row-seen {
+  background-color: #f7bf5a;
+  /* color: #eee; */
+  padding: 10px 15px;
 }
 
 .bird-info {
