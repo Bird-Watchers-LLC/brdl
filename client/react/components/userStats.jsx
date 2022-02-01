@@ -104,7 +104,7 @@ class UserStats extends Component {
           seen = 'Has been seen.';
         }
         display.push(
-          <div class="bird-row">
+          <div className="bird-row">
             <p
               className="bird-info"
               key={`cM${ind}`}

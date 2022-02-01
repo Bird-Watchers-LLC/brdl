@@ -76,10 +76,12 @@ class NavBar extends Component {
       <div className="nav-bar-container" key="nv">
         <div className="nav-logo-container">
           <a href="#">
-            <img className="nav-logo nav--icon" src={LogoIcon} />
+            <p>LOGO</p>
+            {/* <img className="nav-logo nav--icon" src={LogoText} /> */}
           </a>
           <a href="#">
-            <img className="nav-logo nav--text" src={LogoText} />
+            <p>BRDL</p>
+            {/* <img className="nav-logo nav--text" src={LogoText} /> */}
           </a>
         </div>
         <div className="nav-nav-container">{display}</div>

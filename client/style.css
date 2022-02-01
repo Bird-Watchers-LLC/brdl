@@ -59,6 +59,12 @@ body {
   height: 50px;
 }
 
+.nav-logo-container {
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+}
+
 .nav-nav-container ul {
   display: flex;
   list-style: none;
