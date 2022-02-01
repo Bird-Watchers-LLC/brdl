@@ -77,6 +77,10 @@ class NavBar extends Component {
         <div className="nav-logo-container">
           <a href="#">
             <p>LOGO</p>
+            {/* <blockquote class="imgur-embed-pub" lang="en" data-id="Sn2GV1f">
+              <a href="https://imgur.com/Sn2GV1f"></a>
+            </blockquote>
+            <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script> */}
             {/* <img className="nav-logo nav--icon" src={LogoText} /> */}
           </a>
           <a href="#">
