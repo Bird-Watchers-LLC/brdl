@@ -1,6 +1,8 @@
+const tokens = require('../tokens/tokens');
+
 const { Pool } = require('pg');
 
-const PG_URI = 'postgres://leopcmfn:IHIXlZQwrSwciHroC0atNJX0UjYAQI7F@kashin.db.elephantsql.com/leopcmfn';
+const PG_URI = tokens.elephantSQL;
 
 const pool = new Pool({
   connectionString: PG_URI
