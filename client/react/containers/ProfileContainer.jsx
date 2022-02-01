@@ -1,27 +1,31 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
 import UserStats from '../components/userStats.jsx';
 
+const mapStateToProps = state => ({
+  fullName: state.textField.fullName,
+});
+
 const mapDispatchTopProps = dispatch => ({
-  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)),
+  changePageActionCreator: payload => dispatch(actions.changePageActionCreator(payload)),
   // changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()), // Replaced by the one above it
 });
 
 class ProfileContainer extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
-  render () {
+  render() {
     return (
-      <div>
-        <button key='cB' onClick={() => this.props.changePageActionCreator('community')}>Community</button>
-        <h1>Profile Page</h1>
+      <div className="component-container">
+        {/* <button key='cB' onClick={() => this.props.changePageActionCreator('community')}>Community</button> */}
+        <h1>Hello, {this.props.fullName}</h1>
         <UserStats />
       </div>
-    )
+    );
   }
 }
 
-export default connect(null, mapDispatchTopProps)(ProfileContainer);
+export default connect(mapStateToProps, mapDispatchTopProps)(ProfileContainer);

@@ -1,29 +1,29 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CommunitSitings from '../components/CommunitySitings.jsx';
 import FriendSitings from '../components/FriendSitings.jsx';
 import * as actions from '../../redux/actions/actions.js';
 
 const mapDispatchToProps = dispatch => ({
-  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)),
+  changePageActionCreator: payload => dispatch(actions.changePageActionCreator(payload)),
   // changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()), // replaced by the one above
-})
+});
 
 class CommunityContainer extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <button key='pB' onClick={() => this.props.changePageActionCreator('profile')}>Profile</button>
-        <h1>Community Sitings</h1>
+        {/* <button key='pB' onClick={() => this.props.changePageActionCreator('profile')}>Profile</button> */}
+        <h1>Community Sightings</h1>
         <CommunitSitings />
-        <h1>Friend Sitings</h1>
+        <h1>Friend Sightings</h1>
         <FriendSitings />
       </div>
-    )
+    );
   }
 }
 

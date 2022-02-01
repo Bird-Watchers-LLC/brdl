@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
 import SignUp from './SignUp.jsx';
 import Login from './Login.jsx';
+import Navbar from './NavBar.jsx';
 import CommunityContainer from '../containers/CommunityContainer.jsx';
 import ProfileContainer from '../containers/ProfileContainer.jsx';
 
 const mapStateToProps = state => ({ page: state.navigation.page });
 
 const mapDispatchToProps = dispatch => ({
-  changePageActionCreator: (payload) => dispatch(actions.changePageActionCreator(payload)), // Replaces the four below it
+  resetFieldsActionCreator: () => dispatch(actions.resetFieldsActionCreator()),
+  changePageActionCreator: payload => dispatch(actions.changePageActionCreator(payload)), // Replaces the four below it
   // changeToLoginPageActionCreator: () => dispatch(actions.changeToLoginPageActionCreator()),
   // changeToSignUpPageActionCreator: () => dispatch(actions.changeToSignUpPageActionCreator()),
   // changeToCommunityPageActionCreator: () => dispatch(actions.changeToCommunityPageActionCreator()),
@@ -22,7 +24,10 @@ class App extends Component {
   }
 
   render() {
-    const display = [<h1 key="title">brdl</h1>];
+    // const display = [<h1 key="title">brdl</h1>];
+
+    const display = [];
+
     if (this.props.page === 'signUp') {
       display.push(<SignUp key="su" />);
       // display.push(<h2 key='signUp'>Sign Up</h2>);
@@ -35,16 +40,27 @@ class App extends Component {
     else if (this.props.page === 'profile') display.push(<ProfileContainer />);
 
     return (
-      <div key='key2'>
+      <div>
+        <Navbar
+          // navigationActions={{
+          //   changeToSignUpPageActionCreator: this.props.changeToSignUpPageActionCreator,
+          //   changeToLoginPageActionCreator: this.props.changeToLoginPageActionCreator,
+          //   changeToCommunityPageActionCreator: this.props.changeToCommunityPageActionCreator,
+          //   changeToProfilePageActionCreator: this.props.changeToProfilePageActionCreator,
+          // }}
+          currPage={this.props.page}
+          changePageActionCreator={this.props.changePageActionCreator}
+          resetFieldsActionCreator={this.props.resetFieldsActionCreator}
+        />
         {display}
-        <div className="dev" key='key1'>
-          <button key="cB" onClick={() => this.props.changePageActionCreator('community')}>
+        {/* <div className="dev">
+          <button key="cB" onClick={this.props.changeToCommunityPageActionCreator}>
             Dev jump to community page
           </button>
           <button key="pB" onClick={() => this.props.changePageActionCreator('profile')}>
             Dev jump to profile page
           </button>
-        </div>
+        </div> */}
       </div>
     );
   }
