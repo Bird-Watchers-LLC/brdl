@@ -42,7 +42,6 @@ class UserStats extends Component {
       })
         .then(data => data.json())
         .then(data => {
-          console.log(data)
           if ('sciName' in data) {
             this.props.seenBirds.push({ sciName: data.sciName, timeStamp: data.timeStamp });
             this.props.updateSeenBirdsActionCreator(this.props.seenBirds.slice());
@@ -65,6 +64,7 @@ class UserStats extends Component {
       })
         .then(data => data.json())
         .then(data => {
+          data.seenBirds.forEach(bird => bird.sciName = bird.scientific_name);
           if ('seenBirds' in data) this.props.updateSeenBirdsActionCreator(data.seenBirds);
           this.props.updateLocalBirdsActionCreator(data.birds);
           // this.getBirdImages(data.birds);
@@ -101,10 +101,7 @@ class UserStats extends Component {
 
       this.props.localBirds.forEach((bird, ind) => {
         let seen = 'Has not been seen.';
-        console.log('bird', bird)
-        console.log('seen birds', seenBirdNames)
         const birdSeen = bird.sciName in seenBirdNames;
-        console.log(birdSeen)
         if (birdSeen) {
           seenBirdsInThisArea++;
           seen = 'Has been seen.';

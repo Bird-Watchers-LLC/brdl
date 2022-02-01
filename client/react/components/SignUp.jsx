@@ -36,9 +36,7 @@ class SignUp extends Component {
     let queryRes;
 
     if (this.props.mode === 'dev') {
-      console.log('here');
       // this.props.signUpPost.valid = false;
-      console.log(this.props.signUpPost.valid);
       if (this.props.signUpPost.valid) this.props.changeToProfilePageActionCreator();
       else this.props.createAccountSubmitActionCreator();
     } else {
@@ -49,12 +47,8 @@ class SignUp extends Component {
         header: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
       };
       fetch(url, options)
-        .then(res => {
-          console.log('server response', res);
-          return res.json();
-        })
+        .then(res => res.json())
         .then(data => {
-          console.log('dta', data);
           if (data.valid) this.props.changeToProfilePageActionCreator();
           else this.props.createAccountSubmitActionCreator();
         });
@@ -74,7 +68,6 @@ class SignUp extends Component {
   }
 
   render() {
-    console.log(this.props.validUser);
     // if (this.props.validUser === false) displayMessage.push(<p>Incorrect username or password</p>);
     // console.log(displayMessage);
     // console.log(this.props);
@@ -100,7 +93,7 @@ class SignUp extends Component {
           <label htmlFor="password">
             <p>Create a password:</p>
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="enter password"
