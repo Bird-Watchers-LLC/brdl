@@ -48,6 +48,7 @@ class App extends Component {
           //   changeToCommunityPageActionCreator: this.props.changeToCommunityPageActionCreator,
           //   changeToProfilePageActionCreator: this.props.changeToProfilePageActionCreator,
           // }}
+          currPage={this.props.page}
           changePageActionCreator={this.props.changePageActionCreator}
           resetFieldsActionCreator={this.props.resetFieldsActionCreator}
         />

@@ -21,6 +21,36 @@ class NavBar extends Component {
   // <img src={require('/images/image-name.png')} />
 
   render() {
+    const display = [];
+
+    if (this.props.currPage === 'signUp' || this.props.currPage === 'login') {
+      display.push(
+        <li>
+          <a
+            href="#"
+            onClick={() => {
+              this.props.resetFieldsActionCreator();
+              this.props.changePageActionCreator('signUp');
+            }}
+          >
+            Sign Up
+          </a>
+        </li>
+      );
+      display.push(
+        <li>
+          <a
+            href="#"
+            onClick={() => {
+              this.props.resetFieldsActionCreator();
+              this.props.changePageActionCreator('login');
+            }}
+          >
+            Login
+          </a>
+        </li>
+      );
+    }
     return (
       <div className="nav-bar-container" key="nv">
         <div className="nav-logo-container">
@@ -33,7 +63,8 @@ class NavBar extends Component {
         </div>
         <div className="nav-nav-container">
           <ul>
-            <li>
+            {display}
+            {/* <li>
               <a
                 href="#"
                 onClick={() => {
@@ -43,8 +74,8 @@ class NavBar extends Component {
               >
                 Sign Up
               </a>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <a
                 href="#"
                 onClick={() => {
@@ -54,7 +85,8 @@ class NavBar extends Component {
               >
                 Login
               </a>
-            </li>
+            </li> */}
+
             <li>
               <a href="#" onClick={() => this.props.changePageActionCreator('community')}>
                 Community
