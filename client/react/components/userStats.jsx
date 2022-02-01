@@ -105,7 +105,10 @@ class UserStats extends Component {
         }
         display.push(
           <div class="bird-row">
-            <p key={`cM${ind}`}>{`${bird.sciName} is in the area. ${seen}`}</p>
+            <p
+              className="bird-info"
+              key={`cM${ind}`}
+            >{`${bird.sciName} is in the area. ${seen}`}</p>
           </div>
         );
         if (!birdSeen)

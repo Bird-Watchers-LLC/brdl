@@ -112,7 +112,12 @@ p {
 }
 
 .bird-row {
-  border: 1px solid #261803;
+  border: 2px solid #261803;
+  border-radius: 10px;
+}
+
+.bird-info {
+  padding: 8px 16px;
 }
 
 form,
@@ -153,7 +158,7 @@ input:focus {
   display: inline-block;
   width: 50%;
   margin: 0 auto;
-  margin-top: 20px;
+
   border: none;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -161,6 +166,16 @@ input:focus {
   border-radius: 10px;
   transition: all, 0.2s;
   font-weight: 600;
+}
+
+.create-account-btn,
+.login-btn {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 .create-account-btn:hover,
