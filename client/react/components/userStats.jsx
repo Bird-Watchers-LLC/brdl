@@ -108,12 +108,24 @@ class UserStats extends Component {
         if (birdSeen) {
           seenBirdsInThisArea++;
           seen = 'Has been seen.';
+          display.push(
+            <div className="bird-row-seen">
+              <p
+                className="bird-info"
+                key={`cM${ind}`}
+              >{`${bird.sciName} is in the area. ${seen}`}</p>
+            </div>
+          );
+        } else {
+          display.push(
+            <div className="bird-row">
+              <p
+                className="bird-info"
+                key={`cM${ind}`}
+              >{`${bird.sciName} is in the area. ${seen}`}</p>
+            </div>
+          );
         }
-        display.push(
-          <div class="bird-row">
-            <p key={`cM${ind}`}>{`${bird.sciName} is in the area. ${seen}`}</p>
-          </div>
-        );
         if (!birdSeen)
           display.push(
             <button className="btn" key={`key${ind}`} onClick={e => this.newSeenBird(bird.sciName)}>
@@ -123,12 +135,15 @@ class UserStats extends Component {
       });
 
       display.unshift(
-        <h2 key="h2US">{`You have seen ${totalSeenBirds}.\nYou have seen ${seenBirdsInThisArea} out of ${totalBirdsInArea} in the area`}</h2>
+        <h2
+          className="seen-birds-header"
+          key="h2US"
+        >{`You have seen ${totalSeenBirds}.\nYou have seen ${seenBirdsInThisArea} out of ${totalBirdsInArea} in the area`}</h2>
       );
     } else display.push(<h1 key="oops">Error with localBirds</h1>);
 
     return (
-      <div key="cMD" className="component-sub-container ">
+      <div key="cMD" className="component-sub-container">
         {display}
       </div>
     );

@@ -34,15 +34,15 @@ module.exports = {
       // }
       {
         test: /\.(png|svg|jpe?g|gif)$/i,
-        include: path.resolve(__dirname, './assets/img'),
-        type: 'asset/resource',
-        use: {
-          loader: 'file-loader',
+        // include: path.resolve(__dirname, './assets/img'),
+        // type: 'asset/resource',
 
-          options: {
-            publicPath: path.resolve(__dirname, './build'),
-          },
-        },
+        loader: 'file-loader',
+
+        //   options: {
+        //     publicPath: path.resolve(__dirname, './build'),
+        //   },
+        // },
       },
     ],
   },

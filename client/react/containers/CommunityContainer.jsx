@@ -16,11 +16,11 @@ class CommunityContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="component-container">
         {/* <button key='pB' onClick={() => this.props.changePageActionCreator('profile')}>Profile</button> */}
         <h1>Community Sightings</h1>
         <CommunitSitings />
-        <h1>Friend Sightings</h1>
+        <h1 className="friend-sighting-heading">Friend Sightings</h1>
         <FriendSitings />
       </div>
     );
