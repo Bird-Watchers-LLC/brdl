@@ -34,9 +34,9 @@ const initialState = {
   loginGet: {
     valid: true,
   },
-  testMessages: testMessages,
-  testSeenBirds: testSeenBirds,
-  testLocalBirds: testLocalBirds,
+  testMessages,
+  testSeenBirds,
+  testLocalBirds,
 };
 
 const responsesReducer = (state = initialState, action) => {

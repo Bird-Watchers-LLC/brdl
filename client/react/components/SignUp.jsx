@@ -5,7 +5,7 @@ import * as actions from '../../redux/actions/actions.js';
 
 const displayMessage = [];
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   username: state.textField.username,
   password: state.textField.password,
   fullName: state.textField.fullName,
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
   signUpPost: state.responses.signUpPost,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   usernameChangeActionCreator: () => dispatch(actions.usernameChangeActionCreator(event)),
   passwordChangeActionCreator: () => dispatch(actions.passwordChangeActionCreator(event)),
   fullNameChangeActionCreator: () => dispatch(actions.fullNameChangeActionCreator(event)),
@@ -47,8 +47,8 @@ class SignUp extends Component {
         header: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
       };
       fetch(url, options)
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           if (data.valid) this.props.changeToProfilePageActionCreator();
           else this.props.createAccountSubmitActionCreator();
         });
@@ -79,7 +79,7 @@ class SignUp extends Component {
           <p>Create a brdl account and get started today!</p>
         </header>
 
-        <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             <p>Create a username:</p>
             <input
@@ -116,7 +116,7 @@ class SignUp extends Component {
           {this.props.validUser === false ? (
             <p className="validation-msg">Username is already taken</p>
           ) : (
-            <p className="hidden"></p>
+            <p className="hidden" />
           )}
         </form>
       </div>
