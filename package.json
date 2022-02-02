@@ -49,6 +49,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "isomorphic-fetch": "^3.0.0",
+    "jest": "^27.4.7",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.7",
     "sass": "^1.49.0",
