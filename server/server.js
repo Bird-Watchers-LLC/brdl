@@ -11,7 +11,7 @@ const birdController = require('./controllers/birdController');
 
 app.use(express.json()); // replaces body-parser
 app.use(express.urlencoded({ extended: true })); // Helps parse different data types
-app.use(cors());
+// app.use(cors());
 
 // handle GET & POST requests to /gainAccess
 
@@ -27,7 +27,7 @@ app.get('/gainAccess', userController.auth, (req, res) => {
 // mw will return a boolean
 // if false, res.send('Account creation failed')
 // else, direct user to profile page
-app.post('/gainAccess', userController.create, (req, res) => {
+app.post('/api/gainAccess', userController.create, (req, res) => {
   res.status(200).json(res.locals.auth);
 });
 

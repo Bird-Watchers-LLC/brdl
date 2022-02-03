@@ -41,10 +41,12 @@ class SignUp extends Component {
       else this.props.createAccountSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}&fullName=${this.props.fullName}`;
+      const url = `/api/gainAccess`;
+      // console.log(this.props.username, this.props.password, this.props.fullName);
       const options = {
         method: 'POST',
-        header: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
+        headers: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: this.props.username, password: this.props.password, fullName: this.props.fullName}),
       };
       fetch(url, options)
         .then((res) => res.json())
