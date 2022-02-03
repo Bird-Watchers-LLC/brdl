@@ -21,7 +21,7 @@ class ProfileContainer extends Component {
     return (
       <div className="component-container">
         {/* <button key='cB' onClick={() => this.props.changePageActionCreator('community')}>Community</button> */}
-        <h1 className="profile-header">Hello, {this.props.username}</h1>
+        <h1 className="profile-header">Hello, {this.state.username}</h1>
         <UserStats />
       </div>
     );

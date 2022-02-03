@@ -38,6 +38,11 @@ class NavBar extends Component {
             </a>
           </li>
           <li>
+            <a href="brdDry" onClick={() => this.props.changePageActionCreator('brdDiary')}>
+              Brd Diary
+            </a>
+           </li>
+          <li>
             <a
               href="#"
               onClick={() => {
@@ -63,11 +68,11 @@ class NavBar extends Component {
               My Profile
             </a>
            </li>
-          <li>
+          {/* <li>
             <a href="brdDry" onClick={() => this.props.changePageActionCreator('brdDiary')}>
               Brd Diary
             </a>
-           </li>
+           </li> */}
           <li>
             <a href="#">Settings</a>
           </li>

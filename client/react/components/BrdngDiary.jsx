@@ -13,7 +13,12 @@ class BrdingDiary extends Component {
 
 
   render(){
-
+    return(
+      <div className="component-container">
+      {/* <button key='cB' onClick={() => this.props.changePageActionCreator('community')}>Community</button> */}
+      <h1 className="profile-header">Brding Diary</h1>
+    </div>
+    )
   }
 }
 
