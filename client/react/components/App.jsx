@@ -6,6 +6,8 @@ import Login from './Login.jsx';
 import Navbar from './NavBar.jsx';
 import CommunityContainer from '../containers/CommunityContainer.jsx';
 import ProfileContainer from '../containers/ProfileContainer.jsx';
+import BrdngDiaryContainer from '../containers/BrdngDiaryContainer.jsx';
+//import BrdngDiaryContainer from '../containers/BrdngDiaryContainer.jsx';
 
 const mapStateToProps = state => ({ page: state.navigation.page });
 
@@ -36,8 +38,13 @@ class App extends Component {
       display.push(<Login />);
       // display.push(<h2 key='login'>Login</h2>);
       // display.push(<button key='sB' onClick={this.props.changeToSignUpPageActionCreator}>Need an account?</button>)
-    } else if (this.props.page === 'community') display.push(<CommunityContainer />);
-    else if (this.props.page === 'profile') display.push(<ProfileContainer />);
+    } else if (this.props.page === 'community'){
+      display.push(<CommunityContainer />)
+    } else if (this.props.page === 'profile'){
+      display.push(<ProfileContainer />)
+    } else if (this.props.page === 'brdDiary'){
+      display.push(<BrdngDiaryContainer />)
+    }
 
     return (
       <div>

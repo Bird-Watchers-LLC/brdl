@@ -62,7 +62,12 @@ class NavBar extends Component {
             <a href="#" onClick={() => this.props.changePageActionCreator('profile')}>
               My Profile
             </a>
-          </li>
+           </li>
+          <li>
+            <a href="brdDry" onClick={() => this.props.changePageActionCreator('brdDiary')}>
+              Brd Diary
+            </a>
+           </li>
           <li>
             <a href="#">Settings</a>
           </li>
