@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/server.js\"",
     "build": "webpack"
   },
@@ -23,10 +23,12 @@
   "author": "Me",
   "license": "ISC",
   "dependencies": {
+    "assert": "^2.0.0",
     "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "browserify": "^17.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "node-fetch": "^3.2.0",
     "pg": "^8.7.1",
@@ -42,6 +44,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/runtime": "^7.16.7",
+    "@testing-library/react": "^12.1.2",
     "babel-loader": "^8.2.3",
     "concurrently": "^6.0.2",
     "cross-env": "^7.0.3",
@@ -55,6 +58,7 @@
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",
+    "supertest": "^6.2.2",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.3"
