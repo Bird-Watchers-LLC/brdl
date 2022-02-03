@@ -27,6 +27,10 @@ const mapDispatchToProps = dispatch => ({
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      username: '',
+      password: '',
+    }
   }
 
   handleAccountSubmit(e, mode, serverRes) {
@@ -43,12 +47,12 @@ class Login extends Component {
       const url = `api/gainAccess`;
       const options = {
         method: 'GET',
-        header: {
+        headers: {
           'Access-Control-Allow-Origin': ' * ',
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: { username: this.props.username, password: this.props.password}
+        body: { username: this.state.username, password: this.state.password}
       };
       fetch(url, options)
         .then(res => res.json())
@@ -67,7 +71,39 @@ class Login extends Component {
           <p>Sign in and get brdlng!</p>
         </header>
 
-        <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form key="li-form" onSubmit={e => this.handleAccountSubmit(e)}>
+          <label htmlFor="username">
+            Enter username:
+            <input type="text"
+                   id="username"
+                   name="username"
+                   placeholder="enter username"
+                   value = {this.state.username}
+                   onChange={(e) => {this.setState({ username: e.target.value })}}
+                   />
+          </label>
+
+          <label htmlFor="password">
+            Enter password:
+            <input type="password"
+                   id="password"
+                   name="password"
+                  //  placeholder=""
+                   value = {this.state.password}
+                   onChange={(e) => {this.setState({ password: e.target.value })}}
+                   />
+          </label>
+
+
+          <input type="submit" value='Sign In'/>
+          {this.props.validLogin === false ? (
+            <p className="validation-msg">Invalid username or password</p>
+          ) : (
+            <p className="hidden"></p>
+          )};
+        </form>
+
+        {/* <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             <p>Username:</p>
             <input
@@ -97,7 +133,7 @@ class Login extends Component {
           ) : (
             <p className="hidden"></p>
           )}
-        </form>
+        </form> */}
       </div>
     );
   }
