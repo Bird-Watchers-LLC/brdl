@@ -51,7 +51,7 @@ class SignUp extends Component {
       const options = {
         method: 'POST',
         headers: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: this.props.username, password: this.props.password, fullName: this.props.fullName}),
+        body: JSON.stringify({ username: this.state.username, password: this.state.password, fullName: this.state.fullName}),
       };
       fetch(url, options)
         .then((res) => res.json())
@@ -101,7 +101,7 @@ class SignUp extends Component {
           <label>
             Create a password:
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="enter password"
@@ -122,7 +122,10 @@ class SignUp extends Component {
           </label>
           <input type="submit" value='Create Account'/>
         </form>
-
+        </div>
+    );
+  }
+}
         {/* <form action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             <p>Create a username:</p>
@@ -163,9 +166,6 @@ class SignUp extends Component {
             <p className="hidden" />
           )}
         </form> */}
-      </div>
-    );
-  }
-}
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
