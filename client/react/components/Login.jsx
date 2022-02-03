@@ -40,15 +40,15 @@ class Login extends Component {
       else this.props.loginSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `api/gainAccess`;
+      const url = `api/login`;
       const options = {
-        method: 'GET',
-        header: {
+        method: 'POST',
+        headers: {
           'Access-Control-Allow-Origin': ' * ',
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: { username: this.props.username, password: this.props.password}
+        body: JSON.stringify({ username: this.props.username, password: this.props.password})
       };
       fetch(url, options)
         .then(res => res.json())

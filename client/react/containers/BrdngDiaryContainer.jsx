@@ -15,7 +15,7 @@ class BrdngDiaryContainer extends Component {
   render() {
     return (
       <div className="component-container">
-        <h1>Brdng Diary</h1>
+       <h1>Brdng Diary</h1>
         <BrdngDiary />
       </div>
     );
