@@ -27,6 +27,11 @@ const mapDispatchToProps = (dispatch) => ({
 class SignUp extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      username: '',
+      password: '',
+      fullName: '',
+    }
     this.handleAccountSubmit = this.handleAccountSubmit.bind(this);
   }
 
