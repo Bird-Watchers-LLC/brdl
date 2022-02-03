@@ -1,4 +1,3 @@
-import { password } from 'pg/lib/defaults';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
@@ -7,14 +6,12 @@ import * as actions from '../../redux/actions/actions.js';
 const displayMessage = [];
 
 const mapStateToProps = (state) => ({
-  // username: state.textField.username,
-  // password: state.textField.password,
-  // fullName: state.textField.fullName,
+  username: state.textField.username,
+  password: state.textField.password,
+  fullName: state.textField.fullName,
   validUser: state.textField.validUser,
   mode: state.responses.mode,
   signUpPost: state.responses.signUpPost,
-
-  
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,13 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      password: '',
-      fullName: '',
-    }
     this.handleAccountSubmit = this.handleAccountSubmit.bind(this);
-    
   }
 
   handleAccountSubmit(e, mode, serverRes) {
@@ -55,7 +46,7 @@ class SignUp extends Component {
       const options = {
         method: 'POST',
         headers: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: this.state.username, password: this.state.password, fullname: this.state.fullName}),
+        body: JSON.stringify({ username: this.props.username, password: this.props.password, fullName: this.props.fullName}),
       };
       fetch(url, options)
         .then((res) => res.json())
@@ -90,45 +81,7 @@ class SignUp extends Component {
           <p>Create a brdl account and get started today!</p>
         </header>
 
-        <form onSubmit={(e) => this.handleAccountSubmit(e)}>
-          <label>
-            Create a username:
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="enter username"
-              value = {this.state.username}
-              onChange={(e) => {this.setState({ username: e.target.value })}}
-            />
-          </label>
-          <label>
-            Create a password:
-            <input
-              type="text"
-              id="password"
-              name="password"
-              placeholder="enter password"
-              value = {this.state.password}
-              onChange={(e) => {this.setState({ password: e.target.value })}}
-            />
-          </label>
-          <label>
-            Full Name:
-            <input
-              type="text"
-              id="full-name"
-              name="full-name"
-              placeholder="enter full name"
-              value = {this.state.fullName}
-              onChange={(e) => {this.setState({ fullName: e.target.value })}}
-            />
-          </label>
-          <input type="submit" value='Create Account'/>
-        </form>
-
-
-        {/* <form action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
+        <form action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             <p>Create a username:</p>
             <input
@@ -167,8 +120,7 @@ class SignUp extends Component {
           ) : (
             <p className="hidden" />
           )}
-        </form> */}
-
+        </form>
       </div>
     );
   }
