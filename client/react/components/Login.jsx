@@ -8,7 +8,7 @@ loginGet: {
 },
 */
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loginGet: state.responses.loginGet,
   username: state.textField.username,
   password: state.textField.password,
@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
   mode: state.responses.mode,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
   usernameChangeActionCreator: () => dispatch(actions.usernameChangeActionCreator(event)),
   passwordChangeActionCreator: () => dispatch(actions.passwordChangeActionCreator(event)),
@@ -40,19 +40,17 @@ class Login extends Component {
       else this.props.loginSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `api/gainAccess`;
+      const url = `/api/login`;
       const options = {
-        method: 'GET',
-        header: {
-          'Access-Control-Allow-Origin': ' * ',
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json',
-          Accept: 'application/json',
         },
-        body: { username: this.props.username, password: this.props.password}
+        body: JSON.stringify({ username: this.props.username, password: this.props.password }),
       };
       fetch(url, options)
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           if (data.valid) this.props.changeToProfilePageActionCreator();
           else this.props.loginSubmitActionCreator();
         });
@@ -67,7 +65,7 @@ class Login extends Component {
           <p>Sign in and get brdlng!</p>
         </header>
 
-        <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form key="li-form" action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             <p>Username:</p>
             <input
@@ -95,7 +93,7 @@ class Login extends Component {
           {this.props.validLogin === false ? (
             <p className="validation-msg">Invalid username or password</p>
           ) : (
-            <p className="hidden"></p>
+            <p className="hidden" />
           )}
         </form>
       </div>

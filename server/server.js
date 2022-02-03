@@ -34,7 +34,7 @@ app.post('/api/gainAccess', userController.create, (req, res) => {
 // User profile - get local birds in current area
 // client will send a GET request to /profile with { username: value, lat: value, long: value }
 // for 10 birds, mw will return { birds: [{sciName: "", locName: ""}, {...}]}
-app.get('/profile', birdController.nearby, (req, res) => {
+app.get('/api/profile', birdController.nearby, (req, res) => {
   res.status(200).json(res.locals.nearby);
 });
 

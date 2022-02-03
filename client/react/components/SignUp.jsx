@@ -31,7 +31,7 @@ class SignUp extends Component {
       username: '',
       password: '',
       fullName: '',
-    }
+    };
     this.handleAccountSubmit = this.handleAccountSubmit.bind(this);
   }
 
@@ -50,8 +50,13 @@ class SignUp extends Component {
       // console.log(this.props.username, this.props.password, this.props.fullName);
       const options = {
         method: 'POST',
-        headers: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: this.props.username, password: this.props.password, fullName: this.props.fullName}),
+        // headers: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: this.state.username,
+          password: this.state.password,
+          fullName: this.state.fullName,
+        }),
       };
       fetch(url, options)
         .then((res) => res.json())
@@ -94,8 +99,10 @@ class SignUp extends Component {
               id="username"
               name="username"
               placeholder="enter username"
-              value = {this.state.username}
-              onChange={(e) => {this.setState({ username: e.target.value })}}
+              value={this.state.username}
+              onChange={(e) => {
+                this.setState({ username: e.target.value });
+              }}
             />
           </label>
           <label>
@@ -105,8 +112,10 @@ class SignUp extends Component {
               id="password"
               name="password"
               placeholder="enter password"
-              value = {this.state.password}
-              onChange={(e) => {this.setState({ password: e.target.value })}}
+              value={this.state.password}
+              onChange={(e) => {
+                this.setState({ password: e.target.value });
+              }}
             />
           </label>
           <label>
@@ -116,11 +125,13 @@ class SignUp extends Component {
               id="full-name"
               name="full-name"
               placeholder="enter full name"
-              value = {this.state.fullName}
-              onChange={(e) => {this.setState({ fullName: e.target.value })}}
+              value={this.state.fullName}
+              onChange={(e) => {
+                this.setState({ fullName: e.target.value });
+              }}
             />
           </label>
-          <input type="submit" value='Create Account'/>
+          <input type="submit" value="Create Account" />
         </form>
 
         {/* <form action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
