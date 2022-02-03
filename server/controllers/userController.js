@@ -33,8 +33,6 @@ userController.auth = async (req, res, next) => {
 // we will query database with both the username and password. If the db does not contain username, it will store the username and password and set res.locals.auth = true
 // else set res.locals.auth to false if username already exists
 userController.create = async (req, res, next) => {
-  console.log('in usercontroller create');
-  const { fullName, username: clientUsername, password: clientPassword } = req.query;
   try {
     const queryCheckString = 'SELECT * FROM Users WHERE username=$1';
     const queryCheckResult = await db.query(queryCheckString, [clientUsername]);

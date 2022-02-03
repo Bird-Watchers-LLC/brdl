@@ -40,7 +40,7 @@ class Login extends Component {
       else this.props.loginSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}`;
+      const url = `api/gainAccess`;
       const options = {
         method: 'GET',
         header: {
@@ -48,6 +48,7 @@ class Login extends Component {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
+        body: { username: this.props.username, password: this.props.password}
       };
       fetch(url, options)
         .then(res => res.json())
