@@ -1,7 +1,9 @@
-const path = require('path'),
-  express = require('express'),
-  PORT = 3000,
-  app = express();
+const path = require('path');
+const express = require('express');
+const cors = require('cors');
+
+const PORT = 3000;
+const app = express();
 
 const userController = require('./controllers/userController');
 const geoController = require('./controllers/geoController');
@@ -9,6 +11,7 @@ const birdController = require('./controllers/birdController');
 
 app.use(express.json()); // replaces body-parser
 app.use(express.urlencoded({ extended: true })); // Helps parse different data types
+app.use(cors());
 
 // handle GET & POST requests to /gainAccess
 
@@ -17,9 +20,6 @@ app.use(express.urlencoded({ extended: true })); // Helps parse different data t
 // if false, res.send('Login credentials are invalid')
 // else, direct user to the profile page
 app.get('/gainAccess', userController.auth, (req, res) => {
-  res.set('Access-Control-Allow-Origin', ' * ');
-  res.set('Content-Type', 'application/json');
-
   res.status(200).json(res.locals.auth);
 });
 
@@ -28,9 +28,6 @@ app.get('/gainAccess', userController.auth, (req, res) => {
 // if false, res.send('Account creation failed')
 // else, direct user to profile page
 app.post('/gainAccess', userController.create, (req, res) => {
-  res.set('Access-Control-Allow-Origin', ' * ');
-  res.set('Content-Type', 'application/json');
-
   res.status(200).json(res.locals.auth);
 });
 
@@ -38,24 +35,15 @@ app.post('/gainAccess', userController.create, (req, res) => {
 // client will send a GET request to /profile with { username: value, lat: value, long: value }
 // for 10 birds, mw will return { birds: [{sciName: "", locName: ""}, {...}]}
 app.get('/profile', birdController.nearby, (req, res) => {
-  res.set('Access-Control-Allow-Origin', ' * ');
-  res.set('Content-Type', 'application/json');
-
   res.status(200).json(res.locals.nearby);
 });
 
-app.post('/profile', birdController.seen, (req,res) => {
-  res.set('Access-Control-Allow-Origin', ' * ');
-  res.set('Content-Type', 'application/json');
-  
+app.post('/profile', birdController.seen, (req, res) => {
   res.status(200).json(res.locals.seen);
-})
+});
 
 // Local error handler (404/missing routes)
 app.use('*', (req, res) => {
-  res.set('Access-Control-Allow-Origin', ' * ');
-  res.set('Content-Type', 'application/json');
-
   res.status(404).send('PAGE NOT FOUND!!!');
 });
 // Global error handler (middleware errors)
@@ -65,16 +53,13 @@ app.use((err, req, res, next) => {
     status: 500,
     message: { err: 'Express error handler caught unknown middleware error' },
   };
-  const errorObj = Object.assign({}, defaultErr, err);
+  const errorObj = { ...defaultErr, ...err };
   console.log(errorObj.log);
-
-  res.set('Access-Control-Allow-Origin', ' * ');
-  res.set('Content-Type', 'application/json');
 
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(PORT, err => {
+app.listen(PORT, (err) => {
   if (err) console.log(err);
   else console.log('Server listening on PORT', PORT);
 });
