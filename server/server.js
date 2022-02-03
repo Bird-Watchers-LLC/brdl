@@ -11,7 +11,7 @@ const birdController = require('./controllers/birdController');
 
 app.use(express.json()); // replaces body-parser
 app.use(express.urlencoded({ extended: true })); // Helps parse different data types
-app.use(cors());
+//app.use(cors());
 
 // handle GET & POST requests to /gainAccess
 
