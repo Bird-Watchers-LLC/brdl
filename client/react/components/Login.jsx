@@ -8,7 +8,7 @@ loginGet: {
 },
 */
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loginGet: state.responses.loginGet,
   username: state.textField.username,
   password: state.textField.password,
@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
   mode: state.responses.mode,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   changeToProfilePageActionCreator: () => dispatch(actions.changeToProfilePageActionCreator()),
   usernameChangeActionCreator: () => dispatch(actions.usernameChangeActionCreator(event)),
   passwordChangeActionCreator: () => dispatch(actions.passwordChangeActionCreator(event)),
@@ -30,7 +30,7 @@ class Login extends Component {
     this.state = {
       username: '',
       password: '',
-    }
+    };
   }
 
   handleAccountSubmit(e, mode, serverRes) {
@@ -44,19 +44,17 @@ class Login extends Component {
       else this.props.loginSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `api/gainAccess`;
+      const url = `/api/login`;
       const options = {
-        method: 'GET',
+        method: 'POST',
         headers: {
-          'Access-Control-Allow-Origin': ' * ',
           'Content-Type': 'application/json',
-          Accept: 'application/json',
         },
-        body: { username: this.state.username, password: this.state.password}
+        body: JSON.stringify({ username: this.state.username, password: this.state.password }),
       };
       fetch(url, options)
-        .then(res => res.json())
-        .then(data => {
+        .then((res) => res.json())
+        .then((data) => {
           if (data.valid) this.props.changeToProfilePageActionCreator();
           else this.props.loginSubmitActionCreator();
         });
@@ -71,36 +69,40 @@ class Login extends Component {
           <p>Sign in and get brdlng!</p>
         </header>
 
-        <form key="li-form" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form key="li-form" onSubmit={(e) => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             Enter username:
-            <input type="text"
-                   id="username"
-                   name="username"
-                   placeholder="enter username"
-                   value = {this.state.username}
-                   onChange={(e) => {this.setState({ username: e.target.value })}}
-                   />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="enter username"
+              value={this.state.username}
+              onChange={(e) => {
+                this.setState({ username: e.target.value });
+              }}
+            />
           </label>
-
           <label htmlFor="password">
             Enter password:
-            <input type="password"
-                   id="password"
-                   name="password"
-                  //  placeholder=""
-                   value = {this.state.password}
-                   onChange={(e) => {this.setState({ password: e.target.value })}}
-                   />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              //  placeholder=""
+              value={this.state.password}
+              onChange={(e) => {
+                this.setState({ password: e.target.value });
+              }}
+            />
           </label>
-
-
-          <input type="submit" value='Sign In'/>
+          <input type="submit" value="Sign In" />
           {this.props.validLogin === false ? (
             <p className="validation-msg">Invalid username or password</p>
           ) : (
-            <p className="hidden"></p>
-          )};
+            <p className="hidden" />
+          )}
+          ;
         </form>
 
         {/* <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)}>
@@ -131,7 +133,7 @@ class Login extends Component {
           {this.props.validLogin === false ? (
             <p className="validation-msg">Invalid username or password</p>
           ) : (
-            <p className="hidden"></p>
+            <p className="hidden" />
           )}
         </form> */}
       </div>
