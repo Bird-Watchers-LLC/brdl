@@ -11,6 +11,7 @@ userController.auth = async (req, res, next) => {
   try {
     // destructure username and password from req body
     const { username, password } = req.body;
+    console.log('this is in usercontroller auth: ', req.body);
 
     // validate user input
     if (!(username && password)) {
@@ -30,7 +31,12 @@ userController.auth = async (req, res, next) => {
       res.locals.auth = { valid: false };
       return next();
     }
-    res.locals.auth = { valid: true, fullName: queryResult.rows[0].name };
+    res.locals.auth = {
+      valid: true,
+      fullName: queryResult.rows[0].name,
+      username: queryResult.rows[0].username,
+      user_id: queryResult.rows[0]._id,
+    };
     console.log(`Auth success using username: ${username} and password: ${password}`);
     return next();
   } catch (err) {
@@ -73,7 +79,7 @@ userController.create = async (req, res, next) => {
     const queryString = `INSERT INTO users (name, username, password) VALUES ($1, $2, $3) RETURNING *`;
     const queryResult = await db.query(queryString, [fullName, username, encryptedPassword]);
 
-    res.locals.auth = { valid: true, fullName, username };
+    res.locals.auth = { valid: true, fullName, username, user_id: queryResult.rows[0]._id };
     // console.log('account succcessfully made');
     // console.log(queryResult);
     return next();
