@@ -108,7 +108,7 @@ class SignUp extends Component {
           <label>
             Create a password:
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="enter password"
@@ -133,8 +133,12 @@ class SignUp extends Component {
           </label>
           <input type="submit" value="Create Account" />
         </form>
-
-        {/* <form action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
+      </div>
+    );
+  }
+}
+{
+  /* <form action="" onSubmit={(e) => this.handleAccountSubmit(e)}>
           <label htmlFor="username">
             <p>Create a username:</p>
             <input
@@ -173,10 +177,7 @@ class SignUp extends Component {
           ) : (
             <p className="hidden" />
           )}
-        </form> */}
-      </div>
-    );
-  }
+        </form> */
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

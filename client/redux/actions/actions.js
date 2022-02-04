@@ -75,4 +75,14 @@ export const updateLocationActionCreator = pl => ({
   payload: pl,
 });
 
+
+export const getUsernameActionCreator = username => ({
+  type: types.GET_USERNAME,
+  payload: username,
+});
+
+export const getFullNameActionCreator = fullName => ({
+  type: types.GET_FULL_NAME,
+  payload: fullName,
+});
 // export default login;
