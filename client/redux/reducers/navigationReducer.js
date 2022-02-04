@@ -38,6 +38,12 @@ const navigationReducer = (state = initialState, action) => {
         page: 'profile',
       };
 
+      case types.BRDDIARY:
+        return {
+          ...state,
+          page: 'brdDiary',
+        };
+
     default:
       return state;
   }

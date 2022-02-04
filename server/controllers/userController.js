@@ -54,13 +54,14 @@ userController.auth = async (req, res, next) => {
 userController.create = async (req, res, next) => {
   // destructure username,password, and fullname from req.body
   // note - double check with post request on variable names
+  console.log('this is in usercontroller create');
   try {
     console.log(req.body);
     const { username, password, fullName } = req.body;
 
     // validate user input
     if (!(username && password && fullName)) {
-      return res.status(400).send('All input is required');
+      return res.status(400).send('All inputs required');
     }
 
     const queryCheckString = `SELECT * FROM users WHERE username = $1`;
