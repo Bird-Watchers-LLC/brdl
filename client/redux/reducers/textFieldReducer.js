@@ -19,12 +19,10 @@ const textFieldReducer = (state = initialState, action) => {
     if (action.payload.inputType === 'deleteContentBackward')
       curStateVal = state[typeOfField].slice(0, -1);
     else curStateVal = state[typeOfField] + action.payload.data;
-
-    console.log('new prop', { typeOfField, curStateVal });
     return curStateVal;
   };
 
-  switch (action.type) {
+  switch (action?.type) {
     case types.UPDATE_LOCATION:
       const { lat, long } = action.payload;
 
@@ -34,75 +32,45 @@ const textFieldReducer = (state = initialState, action) => {
         long,
       };
 
-    case types.USERNAME_CHANGE:
-      const newUserName = updateTextPerLetter('username');
-      return {
-        ...state,
-        username: newUserName,
-      };
+    // case types.USERNAME_CHANGE:
+    //   const newUserName = updateTextPerLetter('username');
+    //   return {
+    //     ...state,
+    //     username: newUserName,
+    //   };
 
-    case types.PASSWORD_CHANGE:
-      const newPassword = updateTextPerLetter('password');
-      return {
-        ...state,
-        password: newPassword,
-      };
+    // case types.PASSWORD_CHANGE:
+    //   const newPassword = updateTextPerLetter('password');
+    //   return {
+    //     ...state,
+    //     password: newPassword,
+    //   };
 
-    case types.FULL_NAME_CHANGE:
-      const newFullName = updateTextPerLetter('fullName');
-      return {
-        ...state,
-        fullName: newFullName,
-      };
+    // case types.FULL_NAME_CHANGE:
+    //   const newFullName = updateTextPerLetter('fullName');
+    //   return {
+    //     ...state,
+    //     fullName: newFullName,
+    //   };
 
-    case types.RESET_FIELDS:
-      return {
-        ...state,
-        username: '',
-        password: '',
-        fullName: '',
-      };
+    // case types.RESET_FIELDS:
+    //   return {
+    //     ...state,
+    //     username: '',
+    //     password: '',
+    //     fullName: '',
+    //   };
 
     case types.CREATE_ACCOUNT_SUBMIT:
-      // action.payload.e.preventDefault();
-      // console.log(action.payload);
-
-      // let queryRes;
-
-      // if (action.payload.mode === 'dev') {
-      //   queryRes = action.payload.serverRes;
-      // } else {
-      //   // queryRes = actual server query
-      // }
-
-      // console.log(queryRes);
-
-      // console.log({
-      //   ...state
-      // });
-
-      // return queryRes.valid
-      //   ? {
-      //       ...state,
-      //       page: 'login',
-      //     }
-      //   : state;
-
       return {
         ...state,
         validUser: false,
-        // username: '',
-        // password: '',
-        // fullName: '',
       };
 
     case types.LOGIN_SUBMIT:
       return {
         ...state,
         validLogin: false,
-        // username: '',
-        // password: '',
-        // fullName: '',
       };
 
     default:

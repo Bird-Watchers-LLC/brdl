@@ -2,7 +2,7 @@ const tokens = require('../tokens/tokens');
 
 const { Pool } = require('pg');
 
-const PG_URI = tokens.elephantSQL;
+const PG_URI = (process.env.NODE_ENV === 'test') ? tokes.testDatabase : tokens.elephantSQL;
 
 const pool = new Pool({
   connectionString: PG_URI

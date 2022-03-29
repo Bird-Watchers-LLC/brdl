@@ -31,8 +31,10 @@ class Login extends Component {
 
   handleAccountSubmit(e, mode, serverRes) {
     e.preventDefault();
-    // console.log(e, { mode }, { serverRes });
-    let queryRes;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
 
     if (this.props.mode === 'dev') {
       // this.props.loginGet.valid = false;
@@ -40,7 +42,7 @@ class Login extends Component {
       else this.props.loginSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}`;
+      const url = `http://localhost:3000/gainAccess/?username=${username}&password=${password}`;
       const options = {
         method: 'GET',
         header: {

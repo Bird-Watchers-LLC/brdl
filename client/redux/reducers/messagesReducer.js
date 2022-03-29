@@ -8,7 +8,7 @@ const initialState = {
 const messagesReducer = (state = initialState, action) => {
   // const stateCopy = { ...state };
 
-  switch (action.type) {
+  switch (action?.type) {
     case types.UPDATE_FRIEND_MESSAGES:
       return {
         ...state,
