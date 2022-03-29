@@ -63,12 +63,12 @@ class Login extends Component {
   render() {
     return (
       <div className="login-container" key="lic">
-        <header>
-          <h1>Already have an accnt?</h1>
+        <header data-testid="header">
+          <h1>Already have an account?</h1>
           <p>Sign in and get brdlng!</p>
         </header>
 
-        <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)} data-testid="form">
           <label htmlFor="username">
             <p>Username:</p>
             <input
