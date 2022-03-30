@@ -62,12 +62,12 @@ class SignUp extends Component {
   render() {
     return (
       <div className="signup-container" key="suc">
-        <header>
+        <header data-testid="header">
           <h1>New to brd wtchng?</h1>
           <p>Create a brdl account and get started today!</p>
         </header>
 
-        <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form action="" onSubmit={e => this.handleAccountSubmit(e)} data-testid="form">
           <label htmlFor="username">
             <p>Create a username:</p>
             <input

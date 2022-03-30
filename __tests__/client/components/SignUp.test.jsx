@@ -4,12 +4,12 @@ import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 
 import store from '../../../client/redux/store';
-import Login from '../../../client/react/components/Login';
+import SignUp from '../../../client/react/components/SignUp';
 
-describe('Login testing suite.', () => {
+describe('SignUp testing suite.', () => {
   beforeEach(() => render(
     <Provider store={store}>
-      <Login />
+      <SignUp />
     </Provider>
   ));
 
@@ -35,23 +35,24 @@ describe('Login testing suite.', () => {
     const children = screen.queryByTestId('form').childNodes;
     expect(children[0].nodeName).toBe('LABEL');
     expect(children[1].nodeName).toBe('LABEL');
-    expect(children[2].nodeName).toBe('BUTTON');
-    expect(children[3].nodeName).toBe('P');
+    expect(children[2].nodeName).toBe('LABEL');
+    expect(children[3].nodeName).toBe('BUTTON');
+    expect(children[4].nodeName).toBe('P');
   })
 
   test('Form button submits the form data', () => {
     const children = screen.queryByTestId('form').childNodes;
-    expect(children[2].type).toBe('submit');
+    expect(children[3].type).toBe('submit');
   })
 
   test('Form has a username input', () => {
-    const input = screen.getByText('Username:').nextSibling;
+    const input = screen.getByText('Create a username:').nextSibling;
     expect(input.type).toBe('text');
     expect(input.placeholder).toBe('enter username');
   })
 
   test('Form has a password input', () => {
-    const input = screen.getByText('Password:').nextSibling;
+    const input = screen.getByText('Create a password:').nextSibling;
     expect(input.type).toBe('password');
     expect(input.placeholder).toBe('enter password');
   })

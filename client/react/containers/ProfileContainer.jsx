@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
-import UserStats from '../components/userStats.jsx';
+import UserStats from '../components/UserStats.jsx';
 
 const mapStateToProps = state => ({
   username: state.textField.username,
