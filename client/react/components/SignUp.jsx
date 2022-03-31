@@ -33,7 +33,11 @@ class SignUp extends Component {
   handleAccountSubmit(e, mode, serverRes) {
     e.preventDefault();
     // console.log(e, { mode }, { serverRes });
-    let queryRes;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const fullName = document.getElementById('full-name').value;
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
 
     if (this.props.mode === 'dev') {
       // this.props.signUpPost.valid = false;
@@ -41,7 +45,7 @@ class SignUp extends Component {
       else this.props.createAccountSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}&fullName=${this.props.fullName}`;
+      const url = `http://localhost:3000/gainAccess/?username=${username}&password=${password}&fullName=${fullName}`;
       const options = {
         method: 'POST',
         header: { 'Access-Control-Allow-Origin': ' * ', 'Content-Type': 'application/json' },
@@ -53,33 +57,17 @@ class SignUp extends Component {
           else this.props.createAccountSubmitActionCreator();
         });
     }
-
-    /*
-    /gainAccess* 
-  Get or Post
-  /gainAccess?username=value&password=value
-  { username: value, password: value }
-  response = { valid: boolean }
-  */
-
-    // queryRes.valid = false;
-
-    // console.log(queryRes);
   }
 
   render() {
-    // if (this.props.validUser === false) displayMessage.push(<p>Incorrect username or password</p>);
-    // console.log(displayMessage);
-    // console.log(this.props);
-
     return (
       <div className="signup-container" key="suc">
-        <header>
+        <header data-testid="header">
           <h1>New to brd wtchng?</h1>
           <p>Create a brdl account and get started today!</p>
         </header>
 
-        <form action="" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form action="" onSubmit={e => this.handleAccountSubmit(e)} data-testid="form">
           <label htmlFor="username">
             <p>Create a username:</p>
             <input

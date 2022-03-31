@@ -31,8 +31,10 @@ class Login extends Component {
 
   handleAccountSubmit(e, mode, serverRes) {
     e.preventDefault();
-    // console.log(e, { mode }, { serverRes });
-    let queryRes;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
 
     if (this.props.mode === 'dev') {
       // this.props.loginGet.valid = false;
@@ -40,7 +42,7 @@ class Login extends Component {
       else this.props.loginSubmitActionCreator();
     } else {
       // queryRes = actual server query
-      const url = `http://localhost:3000/gainAccess/?username=${this.props.username}&password=${this.props.username}`;
+      const url = `http://localhost:3000/gainAccess/?username=${username}&password=${password}`;
       const options = {
         method: 'GET',
         header: {
@@ -61,12 +63,12 @@ class Login extends Component {
   render() {
     return (
       <div className="login-container" key="lic">
-        <header>
-          <h1>Already have an accnt?</h1>
+        <header data-testid="header">
+          <h1>Already have an account?</h1>
           <p>Sign in and get brdlng!</p>
         </header>
 
-        <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)}>
+        <form key="li-form" action="" onSubmit={e => this.handleAccountSubmit(e)} data-testid="form">
           <label htmlFor="username">
             <p>Username:</p>
             <input

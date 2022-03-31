@@ -74,7 +74,7 @@ class UserStats extends Component {
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(loc => {
+    navigator.geolocation?.getCurrentPosition(loc => {
       const lat = String(Math.floor(loc.coords.latitude * 100) / 100),
         long = String(Math.floor(loc.coords.longitude * 100) / 100),
         locInfo = {};
@@ -106,7 +106,7 @@ class UserStats extends Component {
           seenBirdsInThisArea++;
           seen = 'Has been seen.';
           display.push(
-            <div className="bird-row-seen">
+            <div key={`cM2${ind}`} className="bird-row-seen">
               <p
                 className="bird-info"
                 key={`cM${ind}`}
@@ -115,7 +115,7 @@ class UserStats extends Component {
           );
         } else {
           display.push(
-            <div className="bird-row">
+            <div key={`cM3${ind}`} className="bird-row">
               <p
                 className="bird-info"
                 key={`cM${ind}`}
@@ -140,7 +140,7 @@ class UserStats extends Component {
     } else display.push(<h1 key="oops">Error with localBirds</h1>);
 
     return (
-      <div key="cMD" className="component-sub-container">
+      <div key="cMD" className="component-sub-container" data-testid="div">
         {display}
       </div>
     );

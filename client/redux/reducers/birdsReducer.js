@@ -8,7 +8,7 @@ const initialState = {
 const birdsReducer = (state = initialState, action) => {
   // const stateCopy = { ...state };
 
-  switch (action.type) {
+  switch (action?.type) {
     case types.UPDATE_SEEN_BIRDS:
       return {
         ...state,

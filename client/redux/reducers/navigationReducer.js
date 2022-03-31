@@ -7,7 +7,7 @@ const initialState = {
 const navigationReducer = (state = initialState, action) => {
   // const stateCopy = { ...state };
 
-  switch (action.type) {
+  switch (action?.type) {
     case types.CHANGE_PAGE:
       return {
         ...state,

@@ -1,4 +1,3 @@
-const { query } = require('express');
 const db = require('../models/brdlModels');
 const axios = require('axios');
 const tokens = require('../tokens/tokens');
@@ -10,11 +9,11 @@ const birdController = {};
 
 birdController.nearby = async (req, res, next) => {
     const { username, lat, long } = req.query;
-         // lat/long must be up to 2 decimal points
+    // lat/long must be up to 2 decimal points
     try {
         const apiResponse = await axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${lat}&lng=${long}&maxResults=5`, {
             headers: { "x-ebirdapitoken": tokens.eBirdToken },
-           })
+        })
         const newBirdList = apiResponse.data.map(bird => ({
             sciName: bird.sciName,
             comName: bird.comName,
@@ -49,8 +48,8 @@ birdController.nearby = async (req, res, next) => {
             log: `Express error handler caught in birdController.nearby: ${err.message}`,
             status: 500,
             message: { err: 'Express error handler caught in birdController.nearby' }
-          })
-     }
+        })
+    }
 };
 
 // POST -- when user clicks on a bird they have seen in the area, client will provide username, lat/long, timeStamp, commBirdName, sciBirdName
@@ -71,7 +70,7 @@ birdController.seen = async (req, res, next) => {
         const querySeen = `INSERT INTO seen_birds (username, scientific_name, time_stamp) VALUES ($1, $2, CURRENT_TIMESTAMP) RETURNING time_stamp`
         const seenResult = await db.query(querySeen, [username, sciBirdName]);
         const timeSeen = seenResult.rows[0].time_stamp;
-        res.locals.seen = {sciName: sciBirdName, timeStamp: timeSeen} 
+        res.locals.seen = { sciName: sciBirdName, timeStamp: timeSeen }
         return next()
     } catch (err) {
         return next({

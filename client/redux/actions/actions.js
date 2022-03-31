@@ -74,5 +74,3 @@ export const updateLocationActionCreator = pl => ({
   type: types.UPDATE_LOCATION,
   payload: pl,
 });
-
-// export default login;

@@ -3,22 +3,11 @@ import React, { Component } from 'react';
 
 import LogoIcon from '../../../assets/img/brdl-logo-2-b.png';
 import LogoText from '../../../assets/img/brdl-logo-2-c.png';
-import * as actions from '../../redux/actions/actions.js';
-
-// const img = require('')
-
-console.log('navbar component');
-
-const mapStateToProps = state => ({});
-
-const mapStateToDispatch = dispatch => ({});
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
   }
-
-  // <img src={require('/images/image-name.png')} />
 
   render() {
     const display = [];
